@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		13CA32129E50EB13C03E761B /* Pods_VirtualLine_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 257E175CC611672E40DF208A /* Pods_VirtualLine_User.framework */; };
+		6D00C97DC5B2DE112203FFFA /* Pods_VirtualLine_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6896EA472F2EDB3601F3A68 /* Pods_VirtualLine_User.framework */; };
 		850C24AA248EBEC600B15C27 /* AllQueuesSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C24A9248EBEC600B15C27 /* AllQueuesSectionHeader.swift */; };
 		852B09F2246FF537004715BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852B09F0246FF537004715BD /* Main.storyboard */; };
 		852B09F5246FF63D004715BD /* QueueSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09F4246FF63D004715BD /* QueueSectionHeader.swift */; };
@@ -40,8 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		099AADD534EBD7B34A62A82C /* Pods-VirtualLine User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.debug.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.debug.xcconfig"; sourceTree = "<group>"; };
-		257E175CC611672E40DF208A /* Pods_VirtualLine_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualLine_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		289A7948637438330DECD80E /* Pods-VirtualLine User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.debug.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.debug.xcconfig"; sourceTree = "<group>"; };
 		850C24A9248EBEC600B15C27 /* AllQueuesSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQueuesSectionHeader.swift; sourceTree = "<group>"; };
 		852B09F1246FF537004715BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		852B09F4246FF63D004715BD /* QueueSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueSectionHeader.swift; sourceTree = "<group>"; };
@@ -64,7 +63,7 @@
 		85A1DAD7247AF6DF00D0FFE2 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		85A1DAD9247AF70A00D0FFE2 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
 		85A1DADB247B064800D0FFE2 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
-		CA749B7C74CFA89F756197A9 /* Pods-VirtualLine User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.release.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.release.xcconfig"; sourceTree = "<group>"; };
+		90B6CE9DE42533FEBC481414 /* Pods-VirtualLine User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.release.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.release.xcconfig"; sourceTree = "<group>"; };
 		D35328D8250A246300628871 /* VirtualLine User.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "VirtualLine User.entitlements"; sourceTree = "<group>"; };
 		D35328DB250A272C00628871 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D3A7B56B2460733C00C0247C /* VirtualLine User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VirtualLine User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +74,7 @@
 		D3A7B57A2460733D00C0247C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A7B57D2460733D00C0247C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3A7B57F2460733D00C0247C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D6896EA472F2EDB3601F3A68 /* Pods_VirtualLine_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualLine_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				13CA32129E50EB13C03E761B /* Pods_VirtualLine_User.framework in Frameworks */,
+				6D00C97DC5B2DE112203FFFA /* Pods_VirtualLine_User.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -165,8 +165,8 @@
 		A1FEF0B21A1D00573E970121 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				099AADD534EBD7B34A62A82C /* Pods-VirtualLine User.debug.xcconfig */,
-				CA749B7C74CFA89F756197A9 /* Pods-VirtualLine User.release.xcconfig */,
+				289A7948637438330DECD80E /* Pods-VirtualLine User.debug.xcconfig */,
+				90B6CE9DE42533FEBC481414 /* Pods-VirtualLine User.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -177,7 +177,7 @@
 				D3A7B56D2460733C00C0247C /* VirtualLine User */,
 				D3A7B56C2460733C00C0247C /* Products */,
 				A1FEF0B21A1D00573E970121 /* Pods */,
-				F46DDA5B207657E3B4D88472 /* Frameworks */,
+				DAAAAB9A727D68E1A1984268 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -210,10 +210,10 @@
 			path = "VirtualLine User";
 			sourceTree = "<group>";
 		};
-		F46DDA5B207657E3B4D88472 /* Frameworks */ = {
+		DAAAAB9A727D68E1A1984268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				257E175CC611672E40DF208A /* Pods_VirtualLine_User.framework */,
+				D6896EA472F2EDB3601F3A68 /* Pods_VirtualLine_User.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -225,11 +225,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3A7B5822460733D00C0247C /* Build configuration list for PBXNativeTarget "VirtualLine User" */;
 			buildPhases = (
-				F962D1009DA91D6434F5CAC9 /* [CP] Check Pods Manifest.lock */,
+				CEB9EABA0A28BCF9FC76F899 /* [CP] Check Pods Manifest.lock */,
 				D3A7B5672460733C00C0247C /* Sources */,
 				D3A7B5682460733C00C0247C /* Frameworks */,
 				D3A7B5692460733C00C0247C /* Resources */,
-				EEC03C88660C08894809E807 /* [CP] Embed Pods Frameworks */,
+				AB322118B1B67EBBC8A6C1DE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -293,7 +293,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		EEC03C88660C08894809E807 /* [CP] Embed Pods Frameworks */ = {
+		AB322118B1B67EBBC8A6C1DE /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -310,7 +310,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F962D1009DA91D6434F5CAC9 /* [CP] Check Pods Manifest.lock */ = {
+		CEB9EABA0A28BCF9FC76F899 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -500,7 +500,7 @@
 		};
 		D3A7B5832460733D00C0247C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 099AADD534EBD7B34A62A82C /* Pods-VirtualLine User.debug.xcconfig */;
+			baseConfigurationReference = 289A7948637438330DECD80E /* Pods-VirtualLine User.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "VirtualLine User/VirtualLine User.entitlements";
@@ -522,7 +522,7 @@
 		};
 		D3A7B5842460733D00C0247C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CA749B7C74CFA89F756197A9 /* Pods-VirtualLine User.release.xcconfig */;
+			baseConfigurationReference = 90B6CE9DE42533FEBC481414 /* Pods-VirtualLine User.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "VirtualLine User/VirtualLine User.entitlements";
