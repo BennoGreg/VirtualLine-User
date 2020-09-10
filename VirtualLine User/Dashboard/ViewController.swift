@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseFirestoreSwift
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -16,7 +18,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         static let companyDetailSegue = "companyDetailSegue"
     }
 
-    var data = QueuesData()
     var selectedQueue: Queue?
 
     
@@ -26,6 +27,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
        
+        
         self.parent?.title = "Virtual Line"
        navigationItem.largeTitleDisplayMode = .always
        self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -38,23 +40,58 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
        
         setUpFirebase()
    
+        getAllQueues()
+    }
+    
+    func getAllQueues() {
         
+        let db = Firestore.firestore()
+        let docRef = db.collection("queue")
+
+        docRef.addSnapshotListener { [weak self] snapshot, error in
+            if let err = error {
+                print("Error getting documents: \(err)")
+            } else {
+                if let documents = snapshot?.documents {
+                    var queues = [Queue]()
+                    for document in documents {
+                        do {
+                            if let queue = try document.data(as: Queue.self) {
+                                queues.append(queue)
+                            }
+                        } catch let error as NSError {
+                            print("error: \(error)")
+                        }
+                    }
+                    self?.updateViewWithQueues(queues: queues)
+                }
+            }
+            
+        }
     }
    
+    func updateViewWithQueues(queues: [Queue])  {
+        
+        QueuesData.shared.allQueues = queues
+        queueCollectionView.reloadData()
+        
+    }
+    
      // MARK: UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
       
-        if indexPath.section == 0{
+        if indexPath.section == 0 && QueuesData.shared.currentQueues != nil {
             
-            selectedQueue = data.currentQueues[indexPath.row]
+            if let currentQueue = QueuesData.shared.currentQueues?[indexPath.row]{
+            selectedQueue = currentQueue
             performSegue(withIdentifier: Segues.queueDetailsSegue, sender: nil)
+            }
             
-        }else {
-            selectedQueue = data.allQueues[indexPath.row]
+        }else if indexPath.section == 1 {
+            selectedQueue = QueuesData.shared.allQueues[indexPath.row]
             performSegue(withIdentifier: Segues.companyDetailSegue, sender: nil)
         }
-       
         
       }
 
@@ -73,14 +110,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // MARK: UICollectionViewDataSource
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
+        
            return 2
        }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if section == 0{
-            return data.currentQueues.count
+            return QueuesData.shared.currentQueues?.count ?? 0
         }else {
-            return data.allQueues.count
+            return QueuesData.shared.allQueues.count
         }
     }
     
@@ -91,9 +129,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         
-        if indexPath.section == 0{
+        if indexPath.section == 0 {
         let cell: QueueCell = collectionView.dequeueReusableCell(withReuseIdentifier: "queueCell", for: indexPath) as! QueueCell
-            cell.update(queueName: data.allQueues[indexPath.row].name, queueTime:data.allQueues[indexPath.row].waitingTime, queueLength: data.allQueues[indexPath.row].queueLength)
+            cell.update(queueName: QueuesData.shared.allQueues[indexPath.row].name, queueTime: QueuesData.shared.allQueues[indexPath.row].timePerCustomer * QueuesData.shared.allQueues[indexPath.row].queueCount, queueLength: QueuesData.shared.allQueues[indexPath.row].queueCount)
            
             updateCellLayout(cell: cell)
              return cell
@@ -101,7 +139,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }else  {
             
             let cell: CompanyCell = collectionView.dequeueReusableCell(withReuseIdentifier: "companyCell", for: indexPath) as! CompanyCell
-            cell.update(companyName: data.allQueues[indexPath.row].name)
+            cell.update(companyName: QueuesData.shared.allQueues[indexPath.row].name)
              updateCellLayout(cell: cell)
             return cell
         
@@ -111,16 +149,45 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // Section Header View
        func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
            let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "QueueSectionHeader", for: indexPath) as! QueueSectionHeader
-
-        if indexPath.section == 0{
-        sectionHeaderView.update(sectionName: "Aktuelle Warteschlange")
-        }else{
-        sectionHeaderView.update(sectionName: "Warteschlangen in der Nähe")
-        }
         
+        
+        if indexPath.section == 0 && QueuesData.shared.currentQueues != nil {
+            
+        sectionHeaderView.update(sectionName: "Aktuelle Warteschlange")
+        }
+//        else if indexPath.section == 0 && QueuesData.shared.currentQueues == nil {
+//
+//        sectionHeaderView.update(sectionName: "")
+//
+//        }
+        else if indexPath.section == 1 {
+            
+        sectionHeaderView.update(sectionName: "Warteschlangen in der Nähe")
+            
+        }
         
            return sectionHeaderView
        }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        
+        if section == 0 && QueuesData.shared.currentQueues == nil {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        } else {
+            return UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+        }
+        
+       
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        if section == 0 && QueuesData.shared.currentQueues == nil {
+            return CGSize(width: 0, height: 0)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 65)
+        }
+    }
     
     
     func updateCellLayout(cell: UICollectionViewCell){
@@ -147,11 +214,16 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
        
         if (indexPath.section == 0){
-        return CGSize(width: 180, height: 180)
-        }else {
+            if QueuesData.shared.currentQueues != nil {
+                return CGSize(width: 180, height: 180)
+            } else {
+                return CGSize(width: 0, height: 0)
+            }
+        } else {
             return CGSize(width: 110, height: 110)
 
         }
-    }
+    
+}
 }
 
