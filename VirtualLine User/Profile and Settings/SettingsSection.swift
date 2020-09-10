@@ -33,7 +33,7 @@ enum SettingsSection: Int, CaseIterable, CustomStringConvertible{
     
 }
 
-enum ProfileOptions: Int, CaseIterable, CustomStringConvertible, SectionType{
+enum LoggedInProfileOptions: Int, CaseIterable, CustomStringConvertible, SectionType{
     var containsSwitch: Bool {return false}
     
     
@@ -47,6 +47,22 @@ enum ProfileOptions: Int, CaseIterable, CustomStringConvertible, SectionType{
                return "Profil bearbeiten"
            case .logOut:
                return "Ausloggen"
+           }
+           
+       }
+}
+
+enum LoggedOutProfileOptions: Int, CaseIterable, CustomStringConvertible, SectionType{
+    var containsSwitch: Bool {return false}
+    
+    
+    case logIn
+    
+    var description: String {
+           
+           switch self {
+           case .logIn:
+               return "Einloggen"
            }
            
        }
@@ -66,10 +82,7 @@ enum SettingsOptions: Int, CaseIterable, SectionType{
             return true
         case .language:
             return false
-        default:
-            return false
         }
-        
     }
     
     var description: String {

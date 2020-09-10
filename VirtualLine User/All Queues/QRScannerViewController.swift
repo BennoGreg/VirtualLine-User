@@ -28,7 +28,8 @@ class QRScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsD
        }
 
        override func viewWillDisappear(_ animated: Bool) {
-        
+        parent?.title = ""
+
          //  navigationItem.largeTitleDisplayMode = .always
 //navigationController?.navigationBar.prefersLargeTitles = true
          //  navigationController?.navigationBar.isTranslucent = true

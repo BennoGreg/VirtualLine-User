@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3FA01B11250AAA1900EB8F96 /* PhoneLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA01B10250AAA1900EB8F96 /* PhoneLoginViewController.storyboard */; };
+		3FA01B13250AAA3F00EB8F96 /* PhoneLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B12250AAA3F00EB8F96 /* PhoneLoginViewController.swift */; };
+		3FA01B16250AAD0200EB8F96 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */; };
+		3FA01B18250AAD9F00EB8F96 /* CredentialsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B17250AAD9F00EB8F96 /* CredentialsController.swift */; };
+		3FA01B1A250AB10B00EB8F96 /* Segues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B19250AB10B00EB8F96 /* Segues.swift */; };
+		3FC8D64D250ABDC600A4E0A0 /* PhoneLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D64C250ABDC600A4E0A0 /* PhoneLoginViewModel.swift */; };
 		6D00C97DC5B2DE112203FFFA /* Pods_VirtualLine_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D6896EA472F2EDB3601F3A68 /* Pods_VirtualLine_User.framework */; };
 		850C24AA248EBEC600B15C27 /* AllQueuesSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C24A9248EBEC600B15C27 /* AllQueuesSectionHeader.swift */; };
 		852B09F2246FF537004715BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852B09F0246FF537004715BD /* Main.storyboard */; };
@@ -41,6 +47,12 @@
 
 /* Begin PBXFileReference section */
 		289A7948637438330DECD80E /* Pods-VirtualLine User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.debug.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.debug.xcconfig"; sourceTree = "<group>"; };
+		3FA01B10250AAA1900EB8F96 /* PhoneLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneLoginViewController.storyboard; sourceTree = "<group>"; };
+		3FA01B12250AAA3F00EB8F96 /* PhoneLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginViewController.swift; sourceTree = "<group>"; };
+		3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		3FA01B17250AAD9F00EB8F96 /* CredentialsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsController.swift; sourceTree = "<group>"; };
+		3FA01B19250AB10B00EB8F96 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
+		3FC8D64C250ABDC600A4E0A0 /* PhoneLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginViewModel.swift; sourceTree = "<group>"; };
 		850C24A9248EBEC600B15C27 /* AllQueuesSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQueuesSectionHeader.swift; sourceTree = "<group>"; };
 		852B09F1246FF537004715BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		852B09F4246FF63D004715BD /* QueueSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueSectionHeader.swift; sourceTree = "<group>"; };
@@ -89,6 +101,25 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3FA01B0F250AA9F700EB8F96 /* Phone-Login */ = {
+			isa = PBXGroup;
+			children = (
+				3FA01B10250AAA1900EB8F96 /* PhoneLoginViewController.storyboard */,
+				3FA01B12250AAA3F00EB8F96 /* PhoneLoginViewController.swift */,
+				3FC8D64C250ABDC600A4E0A0 /* PhoneLoginViewModel.swift */,
+			);
+			path = "Phone-Login";
+			sourceTree = "<group>";
+		};
+		3FA01B14250AACE600EB8F96 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */,
+				3FA01B19250AB10B00EB8F96 /* Segues.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		852B09F3246FF623004715BD /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,6 +184,7 @@
 		8583DE41246745C000F2A406 /* Profile and Settings */ = {
 			isa = PBXGroup;
 			children = (
+				3FA01B0F250AA9F700EB8F96 /* Phone-Login */,
 				8583DE462467475100F2A406 /* UserSettingsViewController.storyboard */,
 				8583DE482467475C00F2A406 /* UserSettingsViewController.swift */,
 				85A1DAD7247AF6DF00D0FFE2 /* SettingsCell.swift */,
@@ -192,6 +224,7 @@
 		D3A7B56D2460733C00C0247C /* VirtualLine User */ = {
 			isa = PBXGroup;
 			children = (
+				3FA01B17250AAD9F00EB8F96 /* CredentialsController.swift */,
 				D35328DB250A272C00628871 /* GoogleService-Info.plist */,
 				D35328D8250A246300628871 /* VirtualLine User.entitlements */,
 				8583DE3F2467454900F2A406 /* Dashboard */,
@@ -200,6 +233,7 @@
 				8583DE402467455600F2A406 /* All Queues */,
 				8583DE41246745C000F2A406 /* Profile and Settings */,
 				855E0E98248685BA00DEF643 /* Server Communication */,
+				3FA01B14250AACE600EB8F96 /* Utilities */,
 				D3A7B56E2460733C00C0247C /* AppDelegate.swift */,
 				D3A7B5702460733C00C0247C /* SceneDelegate.swift */,
 				D3A7B57A2460733D00C0247C /* Assets.xcassets */,
@@ -282,6 +316,7 @@
 				858CED96248D664D003E19B0 /* AllQueuesViewController.storyboard in Resources */,
 				D35328DC250A272C00628871 /* GoogleService-Info.plist in Resources */,
 				8532FD862477C0FE00EA3404 /* CurrentQueueDetailsViewController.storyboard in Resources */,
+				3FA01B11250AAA1900EB8F96 /* PhoneLoginViewController.storyboard in Resources */,
 				8532FD8A2477C17200EA3404 /* CompanyViewController.storyboard in Resources */,
 				8583DE472467475100F2A406 /* UserSettingsViewController.storyboard in Resources */,
 				D3A7B57B2460733D00C0247C /* Assets.xcassets in Resources */,
@@ -342,6 +377,7 @@
 				85A1DAD8247AF6DF00D0FFE2 /* SettingsCell.swift in Sources */,
 				8583DE45246746C800F2A406 /* QRScannerViewController.swift in Sources */,
 				858CED98248D71EA003E19B0 /* AllQueuesCell.swift in Sources */,
+				3FA01B13250AAA3F00EB8F96 /* PhoneLoginViewController.swift in Sources */,
 				D3A7B5732460733C00C0247C /* ViewController.swift in Sources */,
 				D3A7B56F2460733C00C0247C /* AppDelegate.swift in Sources */,
 				855E0E9A248685DF00DEF643 /* ServerCommunication.swift in Sources */,
@@ -351,10 +387,14 @@
 				852B09FD2470128B004715BD /* Data.swift in Sources */,
 				852B09F9246FF8E9004715BD /* CompanyCell.swift in Sources */,
 				852B09FB247011A5004715BD /* TestQueue.swift in Sources */,
+				3FC8D64D250ABDC600A4E0A0 /* PhoneLoginViewModel.swift in Sources */,
+				3FA01B18250AAD9F00EB8F96 /* CredentialsController.swift in Sources */,
 				852B09F5246FF63D004715BD /* QueueSectionHeader.swift in Sources */,
+				3FA01B16250AAD0200EB8F96 /* UserDefaults.swift in Sources */,
 				858CED94248D662C003E19B0 /* AllQueuesViewController.swift in Sources */,
 				8583DE492467475C00F2A406 /* UserSettingsViewController.swift in Sources */,
 				D3A7B5712460733C00C0247C /* SceneDelegate.swift in Sources */,
+				3FA01B1A250AB10B00EB8F96 /* Segues.swift in Sources */,
 				8532FD882477C15A00EA3404 /* CompanyViewController.swift in Sources */,
 				852B09F7246FF7B5004715BD /* QueueCell.swift in Sources */,
 				850C24AA248EBEC600B15C27 /* AllQueuesSectionHeader.swift in Sources */,
