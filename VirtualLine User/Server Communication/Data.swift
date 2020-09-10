@@ -8,26 +8,17 @@
 
 import UIKit
 
-struct QueuesData{
+class QueuesData {
     
-    let allQueues: [Queue] = [
-     
-     .init(name: "Klipp", waitingTime: 62, queueLength: 4),
-     .init(name: "Magenta Store", waitingTime: 12, queueLength: 3),
-     .init(name: "Mödling BH", waitingTime: 143, queueLength: 16),
-     .init(name: "Primark", waitingTime: 5, queueLength: 2),
-     .init(name: "H&M", waitingTime: 23, queueLength: 3),
-     .init(name: "Interspar", waitingTime: 2, queueLength: 1),
-     .init(name: "Spar", waitingTime: 1, queueLength: 1),
-         
+    var allQueues: [Queue] = [
+        .init(name: "Klipp", queueCount: 20, timePerCustomer: 20)
      ]
      
-     let currentQueues: [Queue] = [
-     
-     .init(name: "H&M", waitingTime: 23, queueLength: 3),
+     var currentQueues: [Queue]?
     
-     
-     ]
+   public static let shared = QueuesData()
+    
+    private init(){}
     
     
     

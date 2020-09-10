@@ -19,5 +19,9 @@ class QueueSectionHeader: UICollectionReusableView {
         sectionNameLabel.text = sectionName
     }
     
+    override func prepareForReuse() {
+        sectionNameLabel.text = ""
+    }
+    
     
 }

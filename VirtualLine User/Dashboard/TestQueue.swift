@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct Queue {
+struct TestQueue{
     
     let name: String
     var waitingTime: Int
@@ -16,3 +16,9 @@ struct Queue {
     
 }
 
+struct Queue: Codable{
+    
+    let name: String
+    let queueCount: Int
+    let timePerCustomer: Int
+}

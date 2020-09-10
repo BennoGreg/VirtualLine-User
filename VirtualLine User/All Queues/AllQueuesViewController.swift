@@ -15,7 +15,6 @@ struct Section {
 
 class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet var allQueuesCollectionView: UICollectionView!
-    var data = QueuesData()
     var sections = [Section]()
     var letters = [String]()
 
@@ -30,7 +29,7 @@ class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICol
     func configureQueueData() {
         var queueNames: [String] = []
 
-        for curQueue in data.allQueues {
+        for curQueue in QueuesData.shared.allQueues {
             queueNames.append(curQueue.name)
         }
 

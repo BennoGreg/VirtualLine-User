@@ -23,12 +23,9 @@ class CompanyViewController: UIViewController {
         // corner radius
         ticketView.layer.cornerRadius = 10
         companyNameLabel.text = currentCompanyQueue?.name
-        if let curWaitingTime = currentCompanyQueue?.waitingTime {
-            waitingTimeLabel.text = String(curWaitingTime)
-        }
-
-        if let curQueueLength = currentCompanyQueue?.queueLength {
-            queueLengthLabel.text = String(curQueueLength)
+        if let queueCount = currentCompanyQueue?.queueCount, let timePerCustomer = currentCompanyQueue?.timePerCustomer {
+            waitingTimeLabel.text = String(queueCount*timePerCustomer)
+            queueLengthLabel.text = String(queueCount)
         }
 
         queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0x2B95CE).cgColor, CompanyViewController.UIColorFromRGB(0x2ECAD5).cgColor])
@@ -79,7 +76,18 @@ class CompanyViewController: UIViewController {
         } else {
             userEnqueue(queueID: "UY4qnLOuYiBEKAtmVYH9", userID: "User1")
             queuedUp.toggle()
+          
+            
+            // add queue to current queue
+            if let curQueue = currentCompanyQueue {
 
+            if QueuesData.shared.currentQueues == nil {
+                QueuesData.shared.currentQueues = [Queue]()
+                QueuesData.shared.currentQueues?.append(curQueue)
+            } else {
+                QueuesData.shared.currentQueues?.append(curQueue)
+            }
+            }
             UIView.animate(withDuration: duration, animations: {
                 self.queueUpButton.center.y = self.queueUpButton.center.y + 100
 

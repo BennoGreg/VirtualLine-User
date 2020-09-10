@@ -13,7 +13,7 @@
 		852B09F5246FF63D004715BD /* QueueSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09F4246FF63D004715BD /* QueueSectionHeader.swift */; };
 		852B09F7246FF7B5004715BD /* QueueCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09F6246FF7B5004715BD /* QueueCell.swift */; };
 		852B09F9246FF8E9004715BD /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09F8246FF8E9004715BD /* CompanyCell.swift */; };
-		852B09FB247011A5004715BD /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09FA247011A5004715BD /* Queue.swift */; };
+		852B09FB247011A5004715BD /* TestQueue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09FA247011A5004715BD /* TestQueue.swift */; };
 		852B09FD2470128B004715BD /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09FC2470128B004715BD /* Data.swift */; };
 		8532FD842477C0DE00EA3404 /* CurrentQueueDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8532FD832477C0DE00EA3404 /* CurrentQueueDetailsViewController.swift */; };
 		8532FD862477C0FE00EA3404 /* CurrentQueueDetailsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8532FD852477C0FE00EA3404 /* CurrentQueueDetailsViewController.storyboard */; };
@@ -47,7 +47,7 @@
 		852B09F4246FF63D004715BD /* QueueSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueSectionHeader.swift; sourceTree = "<group>"; };
 		852B09F6246FF7B5004715BD /* QueueCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueCell.swift; sourceTree = "<group>"; };
 		852B09F8246FF8E9004715BD /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
-		852B09FA247011A5004715BD /* Queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
+		852B09FA247011A5004715BD /* TestQueue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestQueue.swift; sourceTree = "<group>"; };
 		852B09FC2470128B004715BD /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
 		8532FD832477C0DE00EA3404 /* CurrentQueueDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentQueueDetailsViewController.swift; sourceTree = "<group>"; };
 		8532FD852477C0FE00EA3404 /* CurrentQueueDetailsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentQueueDetailsViewController.storyboard; sourceTree = "<group>"; };
@@ -131,7 +131,7 @@
 			children = (
 				852B09F0246FF537004715BD /* Main.storyboard */,
 				D3A7B5722460733C00C0247C /* ViewController.swift */,
-				852B09FA247011A5004715BD /* Queue.swift */,
+				852B09FA247011A5004715BD /* TestQueue.swift */,
 				852B09F3246FF623004715BD /* CollectionView */,
 			);
 			path = Dashboard;
@@ -350,7 +350,7 @@
 				85A1DADC247B064800D0FFE2 /* SettingsSection.swift in Sources */,
 				852B09FD2470128B004715BD /* Data.swift in Sources */,
 				852B09F9246FF8E9004715BD /* CompanyCell.swift in Sources */,
-				852B09FB247011A5004715BD /* Queue.swift in Sources */,
+				852B09FB247011A5004715BD /* TestQueue.swift in Sources */,
 				852B09F5246FF63D004715BD /* QueueSectionHeader.swift in Sources */,
 				858CED94248D662C003E19B0 /* AllQueuesViewController.swift in Sources */,
 				8583DE492467475C00F2A406 /* UserSettingsViewController.swift in Sources */,
