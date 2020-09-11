@@ -20,7 +20,7 @@
                     <navigationItem key="navigationItem" id="uFd-CZ-sn6"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <segue destination="2nw-t1-t2V" kind="presentation" identifier="phoneLoginSegue" id="mCY-19-VSu"/>
+                        <segue destination="2nw-t1-t2V" kind="show" identifier="phoneLoginSegue" id="mCY-19-VSu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4ZE-De-t8i" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

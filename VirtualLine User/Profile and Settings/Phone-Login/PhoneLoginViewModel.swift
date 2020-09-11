@@ -8,5 +8,13 @@
 
 class PhoneLoginViewModel {
     
+    public func sendVerificationCodeTo(phoneNumber: String) {
+        
+        
+    }
     
+    public func checkVerificationCode(code: String) -> Bool {
+        
+        return true
+    }
 }

@@ -12,7 +12,12 @@ class CredentialsController {
     
     
     var isLoggedIn = UserDefaultsConfig.isLoggedIn
-    
+    public func updateLogInStatus(loggedIn: Bool) {
+        
+        isLoggedIn = loggedIn
+        UserDefaultsConfig.isLoggedIn = loggedIn
+        
+    }
     public static let shared = CredentialsController()
     
     private init() {}

@@ -16,7 +16,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
     var tableView: UITableView!
     var userInfoHeader: UserInfoHeader!
     
-    var isLoggedIn = false
+    var isLoggedIn = CredentialsController.shared.isLoggedIn
 
     // MARK: - Init
 
@@ -24,8 +24,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
     override func viewWillAppear(_ animated: Bool) {
         
         configureUI()
-        print("test")
-        isLoggedIn = CredentialsController.shared.isLoggedIn
+       
         
     }
 
@@ -51,15 +50,19 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
        
         if isLoggedIn {
             let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
-              userInfoHeader = UserInfoHeader(frame: frame)
+            userInfoHeader = UserInfoHeader(frame: frame)
              tableView.tableHeaderView = userInfoHeader
         }
       
        
         tableView.tableFooterView = UIView()
+         tableView?.reloadData()
     }
 
     func configureUI() {
+        
+         isLoggedIn = CredentialsController.shared.isLoggedIn
+        
         configureTableView()
 
          self.parent?.title = "User"
@@ -153,16 +156,18 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
             
         case .profile:
             
-            if isLoggedIn {
-             print(LoggedInProfileOptions.init(rawValue: indexPath.row)?.description)
-            } else {
            
-//                if let vc = UIStoryboard(name: "PhoneLoginViewController", bundle: nil).instantiateViewController(withIdentifier: "PhoneLoginViewController") as? PhoneLoginViewController
-//                {
-//                    present(vc, animated: true, completion: nil)
-//                }
+            if isLoggedIn {
+             if indexPath.row == 1 {
+                CredentialsController.shared.updateLogInStatus(loggedIn: false)
+                configureUI()
                 
+                }
+                
+            } else {
+                 
                performSegue(withIdentifier: Segues.phoneLoginSegue, sender: nil)
+                
                 
             }
             
