@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestoreSwift
 
 struct TestQueue{
     
@@ -16,8 +17,9 @@ struct TestQueue{
     
 }
 
-struct Queue: Codable{
+struct Queue: Codable, Identifiable {
     
+    @DocumentID var id: String?
     let name: String
     let queueCount: Int
     let timePerCustomer: Int

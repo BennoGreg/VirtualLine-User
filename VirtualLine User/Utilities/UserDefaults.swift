@@ -31,4 +31,10 @@ public struct UserDefaultsWrapper<Value: Codable> {
 public struct UserDefaultsConfig {
     @UserDefaultsWrapper(key: "isLoggedIn", defaultValue: false)
     public static var isLoggedIn: Bool
+    
+    @UserDefaultsWrapper(key: "verificationID", defaultValue: "defaultå")
+    public static var verificationID: String
+    
+    @UserDefaultsWrapper(key: "notifcationsEnabled", defaultValue: false)
+    public static var notifcationsEnabled: Bool
 }

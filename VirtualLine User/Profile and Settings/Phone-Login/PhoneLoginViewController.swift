@@ -22,6 +22,10 @@ class PhoneLoginViewController: ViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
+        self.hideKeyboardWhenTappedAround()
+        
+        viewModel.delegate = self
+        
         self.parent?.title = "Login"
          navigationItem.largeTitleDisplayMode = .always
          self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -36,29 +40,70 @@ class PhoneLoginViewController: ViewController {
     @IBAction func confirmNumberButtonPressed(_ sender: UIButton) {
         
         guard let number = phoneNumberTextField.text else {return}
-        
-        if Validation.isValidPhoneNumber(text: number) {
-            
-            viewModel.sendVerificationCodeTo(phoneNumber: number)
-            
-            verificationCodeLabel.isHidden = false
-            verificationCodeTextField.isHidden = false
-            confirmVerificationButton.isHidden = false
-        }
+        viewModel.verifyPhoneNumber(phoneNumber: number)
     }
     @IBAction func confirmVerificationButtonClicked(_ sender: UIButton) {
         
         guard let code = verificationCodeTextField.text else {return}
-        if viewModel.checkVerificationCode(code: code) {
+       
+        viewModel.checkVerificationCode(verificationCode: code)
             
-            
-            CredentialsController.shared.updateLogInStatus(loggedIn: true)
-           
-            self.navigationController?.popViewController(animated: true)
-            self.dismiss(animated: true, completion: nil)
-            
-            
-        }
+
+}
+
+}
+extension PhoneLoginViewController: PhoneLoginDelegate {
+   
+    
+    
+    func phoneNumberValid() {
+        
+        verificationCodeLabel.isHidden = false
+        verificationCodeTextField.isHidden = false
+        confirmVerificationButton.isHidden = false
         
     }
+    
+    func phoneNumberInvalid() {
+        print("to do invalid number info pop up")
+    }
+    
+    
+   func verificationCodeValid() {
+          CredentialsController.shared.updateLogInStatus(loggedIn: true)
+        self.navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+     }
+     
+     func verificationCodeInvalid() {
+         print("invalid code")
+     }
+    
+    func showMessagePrompt(_ message: String) {
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+       let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+       alert.addAction(okAction)
+       present(alert, animated: false, completion: nil)
+       }
+       
+       func showTextInputPrompt(withMessage message: String, completionBlock: @escaping ((Bool, String?) -> Void)) {
+            let prompt = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+           let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+             completionBlock(false, nil)
+           }
+           weak var weakPrompt = prompt
+           let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+             guard let text = weakPrompt?.textFields?.first?.text else { return }
+             completionBlock(true, text)
+           }
+           prompt.addTextField(configurationHandler: nil)
+           prompt.addAction(cancelAction)
+           prompt.addAction(okAction)
+           present(prompt, animated: true, completion: nil)
+       }
+       
+    
+    
+    
+    
 }

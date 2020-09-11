@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FirebaseFirestoreSwift
 
+
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
@@ -23,7 +24,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
        
-        PhoneAuthentication.instance.verifyPhoneNumber(phoneNumber: "")
         self.parent?.title = "Virtual Line"
        navigationItem.largeTitleDisplayMode = .always
        self.navigationController?.navigationBar.prefersLargeTitles = true
@@ -84,6 +84,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if indexPath.section == 0 && QueuesData.shared.currentQueues != nil {
             
             if let currentQueue = QueuesData.shared.currentQueues?[indexPath.row]{
+             
+                
             selectedQueue = currentQueue
             performSegue(withIdentifier: Segues.queueDetailsSegue, sender: nil)
             }
@@ -129,9 +131,10 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
        
         
-        if indexPath.section == 0 {
-        let cell: QueueCell = collectionView.dequeueReusableCell(withReuseIdentifier: "queueCell", for: indexPath) as! QueueCell
-            cell.update(queueName: QueuesData.shared.allQueues[indexPath.row].name, queueTime: QueuesData.shared.allQueues[indexPath.row].timePerCustomer * QueuesData.shared.allQueues[indexPath.row].queueCount, queueLength: QueuesData.shared.allQueues[indexPath.row].queueCount)
+        if indexPath.section == 0 && QueuesData.shared.currentQueues != nil {
+
+            let cell: QueueCell = collectionView.dequeueReusableCell(withReuseIdentifier: "queueCell", for: indexPath) as! QueueCell
+            cell.update(queueName: QueuesData.shared.currentQueues![indexPath.row].name, queueTime: QueuesData.shared.currentQueues![indexPath.row].timePerCustomer * QueuesData.shared.currentQueues![indexPath.row].queueCount, queueLength: QueuesData.shared.currentQueues![indexPath.row].queueCount)
            
             updateCellLayout(cell: cell)
              return cell

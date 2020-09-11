@@ -5,6 +5,7 @@
 //  Created by Niklas Wagner on 10.09.20.
 //  Copyright © 2020 Benedikt. All rights reserved.
 //
+import UIKit
 
 extension String {
     
@@ -15,4 +16,8 @@ extension String {
            }
            return newString
        }
+        public init(deviceToken: Data) {
+            self = deviceToken.map { String(format: "%.2hhx", $0) }.joined()
+        }
+    
 }

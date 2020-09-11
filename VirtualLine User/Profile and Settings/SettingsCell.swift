@@ -7,6 +7,11 @@
 //
 
  import UIKit
+import FirebaseFirestore
+import UserNotifications
+import FirebaseAuth
+import FirebaseMessaging
+import FirebaseCore
 
  class SettingsCell: UITableViewCell {
      
@@ -22,7 +27,12 @@
     
     lazy var switchControl: UISwitch = {
         let switchControl = UISwitch()
-        switchControl.isOn = true
+
+        if UserDefaultsConfig.notifcationsEnabled {
+            switchControl.isOn = true
+        }else {
+            switchControl.isOn = false
+        }
         //switchControl.onTintColor = UIColor(displayP3Red: 55/255, green: 120/255, blue: 250/255, alpha: 1)
         switchControl.translatesAutoresizingMaskIntoConstraints = false;
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)
@@ -50,10 +60,24 @@
     
     @objc func handleSwitchAction(sender: UISwitch){
         
+        let db = Firestore.firestore()
+        let user = Auth.auth().currentUser
+        if let tokenData = Messaging.messaging().apnsToken {
+        let token = String(deviceToken: tokenData)
+        print(token)
         if sender.isOn {
+            UserDefaultsConfig.notifcationsEnabled = true
+            if let userID = user?.uid {
+                db.collection("user").document(userID).updateData(["deviceToken": token])
+            }
             print("Turned on")
         }else{
+             UserDefaultsConfig.notifcationsEnabled = false
+            if let userID = user?.uid {
+              db.collection("user").document(userID).updateData(["deviceToken": ""])
+            }
             print("Turned off")
+        }
         }
         
         

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class CompanyViewController: UIViewController {
     @IBOutlet var ticketView: UIView!
@@ -47,6 +48,16 @@ class CompanyViewController: UIViewController {
         var cancelPressed = false
         let duration: TimeInterval = 0.8
 
+        
+        if !UserDefaultsConfig.notifcationsEnabled {
+            
+            let alert = UIAlertController(title: "Benachrichtigugen einschalten.", message: "Bitte aktivieren Sie die Benachrichtigungen in den Einstellungen um sich bei einer Warteschlange anstellen zu können", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+            }))
+             present(alert, animated: true, completion: nil)
+        } else {
+        
         if queuedUp {
             let alert = UIAlertController(title: "Warteschlange verlassen", message: "Möchten Sie wirklich die Warteschlange verlassen?", preferredStyle: .alert)
 
@@ -74,7 +85,9 @@ class CompanyViewController: UIViewController {
             present(alert, animated: true, completion: nil)
 
         } else {
-            userEnqueue(queueID: "UY4qnLOuYiBEKAtmVYH9", userID: "User1")
+            if let id = currentCompanyQueue?.id, let userID = Auth.auth().currentUser?.uid {
+            userEnqueue(queueID: id, userID: userID)
+            }
             queuedUp.toggle()
           
             
@@ -101,6 +114,11 @@ class CompanyViewController: UIViewController {
                 // self.queueInfoLabel.text = "Sie sind jetzt in der Warteschange angestellt. \nWir werden Sie rechtzeitig benachrichtigen \nbevor Sie an der Reihe sind"
             }
         }
+        }
+    }
+    
+    func queueUp() {
+        
     }
 
     private func updateMask() {

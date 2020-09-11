@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+
 
 private let reuseIdentifier = "SettingsCell"
 
@@ -161,6 +163,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
              if indexPath.row == 1 {
                 CredentialsController.shared.updateLogInStatus(loggedIn: false)
                 configureUI()
+                logOutPhoneNumber()
                 
                 }
                 
@@ -180,6 +183,18 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
             print(AboutUsOptions.init(rawValue: indexPath.row)?.description)
               
         }
+    }
+    
+    func logOutPhoneNumber() {
+        
+        let firebaseAuth = Auth.auth()
+        
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print("Sign out error: \(signOutError)")
+        }
+        
     }
     
     
