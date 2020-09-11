@@ -15,27 +15,29 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
 
     var tableView: UITableView!
     var userInfoHeader: UserInfoHeader!
+    
+    var isLoggedIn = CredentialsController.shared.isLoggedIn
 
     // MARK: - Init
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        configureUI()
-    }
-
+    
     override func viewWillAppear(_ animated: Bool) {
+        
         configureUI()
-        // title = "User"
+       
+        
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+       
+
     }
 
     // MARK: - Helper Functions
 
     func configureTableView() {
         tableView = UITableView()
-        let color = UIColor(displayP3Red: 6 / 255, green: 14 / 255, blue: 79 / 255, alpha: 1)
+        //let color = UIColor(displayP3Red: 6 / 255, green: 14 / 255, blue: 79 / 255, alpha: 1)
         tableView.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = self
@@ -45,19 +47,27 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         view.addSubview(tableView)
         tableView.frame = view.frame
 
-        let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
-        userInfoHeader = UserInfoHeader(frame: frame)
-        tableView.tableHeaderView = userInfoHeader
+       
+        if isLoggedIn {
+            let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
+            userInfoHeader = UserInfoHeader(frame: frame)
+             tableView.tableHeaderView = userInfoHeader
+        }
+      
+       
         tableView.tableFooterView = UIView()
+         tableView?.reloadData()
     }
 
     func configureUI() {
+        
+         isLoggedIn = CredentialsController.shared.isLoggedIn
+        
         configureTableView()
 
-        parent?.title = "User"
-
-        navigationItem.largeTitleDisplayMode = .always
-        navigationController?.navigationBar.prefersLargeTitles = true
+         self.parent?.title = "User"
+          navigationItem.largeTitleDisplayMode = .always
+          self.navigationController?.navigationBar.prefersLargeTitles = true
 
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
@@ -76,7 +86,11 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         guard let section = SettingsSection(rawValue: section) else { return 0 }
         switch section {
         case .profile:
-            return ProfileOptions.allCases.count
+            if isLoggedIn {
+            return LoggedInProfileOptions.allCases.count
+            } else {
+            return LoggedOutProfileOptions.allCases.count
+            }
         case .settings:
             return SettingsOptions.allCases.count
         case .aboutUs:
@@ -91,8 +105,13 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         switch section {
             
         case .profile:
-            let profile = ProfileOptions.init(rawValue: indexPath.row)
+            if isLoggedIn {
+            let profile = LoggedInProfileOptions.init(rawValue: indexPath.row)
             cell.sectionType = profile
+            } else {
+                let profile = LoggedOutProfileOptions.init(rawValue: indexPath.row)
+                cell.sectionType = profile
+            }
             
         case .settings:
 
@@ -137,7 +156,20 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
             
         case .profile:
             
-             print(ProfileOptions.init(rawValue: indexPath.row)?.description)
+           
+            if isLoggedIn {
+             if indexPath.row == 1 {
+                CredentialsController.shared.updateLogInStatus(loggedIn: false)
+                configureUI()
+                
+                }
+                
+            } else {
+                 
+               performSegue(withIdentifier: Segues.phoneLoginSegue, sender: nil)
+                
+                
+            }
             
         case .settings:
 
@@ -149,4 +181,14 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
               
         }
     }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == Segues.phoneLoginSegue {
+                 let vc = segue.destination as! PhoneLoginViewController
+                 let phoneLoginVC = vc.self
+           }
+         }
+    
+    
 }

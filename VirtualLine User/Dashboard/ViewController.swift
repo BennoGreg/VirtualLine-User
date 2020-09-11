@@ -13,11 +13,7 @@ import FirebaseFirestoreSwift
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     
-    struct Segues {
-        static let queueDetailsSegue = "queueDetailSegue"
-        static let companyDetailSegue = "companyDetailSegue"
-    }
-
+    
     var selectedQueue: Queue?
 
     
@@ -41,6 +37,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         setUpFirebase()
    
         getAllQueues()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+
     }
     
     func getAllQueues() {
@@ -73,7 +72,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func updateViewWithQueues(queues: [Queue])  {
         
         QueuesData.shared.allQueues = queues
-        queueCollectionView.reloadData()
+        queueCollectionView?.reloadData()
+        
         
     }
     
