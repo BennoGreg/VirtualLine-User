@@ -30,6 +30,8 @@
 		85A1DAD8247AF6DF00D0FFE2 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1DAD7247AF6DF00D0FFE2 /* SettingsCell.swift */; };
 		85A1DADA247AF70A00D0FFE2 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1DAD9247AF70A00D0FFE2 /* UserInfoHeader.swift */; };
 		85A1DADC247B064800D0FFE2 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1DADB247B064800D0FFE2 /* SettingsSection.swift */; };
+		C5EE9EFF332065C71D300B36 /* Pods_VirtualLine_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9909618EBF9955286BD9C73C /* Pods_VirtualLine_User.framework */; };
+		D3212E42250AC36100DFAB7C /* PhoneAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3212E41250AC36100DFAB7C /* PhoneAuthentication.swift */; };
 		D35328DC250A272C00628871 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D35328DB250A272C00628871 /* GoogleService-Info.plist */; };
 		D3A7B56F2460733C00C0247C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7B56E2460733C00C0247C /* AppDelegate.swift */; };
 		D3A7B5712460733C00C0247C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7B5702460733C00C0247C /* SceneDelegate.swift */; };
@@ -89,6 +91,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		75CF5154310D5F33BA2328F7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9909618EBF9955286BD9C73C /* Pods_VirtualLine_User.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		852B09F3246FF623004715BD /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +168,7 @@
 				85A1DAD7247AF6DF00D0FFE2 /* SettingsCell.swift */,
 				85A1DAD9247AF70A00D0FFE2 /* UserInfoHeader.swift */,
 				85A1DADB247B064800D0FFE2 /* SettingsSection.swift */,
+				D3212E41250AC36100DFAB7C /* PhoneAuthentication.swift */,
 			);
 			path = "Profile and Settings";
 			sourceTree = "<group>";
@@ -342,6 +353,7 @@
 				85A1DAD8247AF6DF00D0FFE2 /* SettingsCell.swift in Sources */,
 				8583DE45246746C800F2A406 /* QRScannerViewController.swift in Sources */,
 				858CED98248D71EA003E19B0 /* AllQueuesCell.swift in Sources */,
+				D3212E42250AC36100DFAB7C /* PhoneAuthentication.swift in Sources */,
 				D3A7B5732460733C00C0247C /* ViewController.swift in Sources */,
 				D3A7B56F2460733C00C0247C /* AppDelegate.swift in Sources */,
 				855E0E9A248685DF00DEF643 /* ServerCommunication.swift in Sources */,
