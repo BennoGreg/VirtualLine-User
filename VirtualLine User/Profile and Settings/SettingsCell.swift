@@ -20,8 +20,10 @@ import FirebaseCore
     var sectionType: SectionType? {
         didSet{
             guard let sectionType = sectionType else {return}
-            textLabel?.text = sectionType.description
+            
             switchControl.isHidden = !sectionType.containsSwitch
+
+            textLabel?.text = sectionType.description
         }
     }
     
@@ -43,8 +45,11 @@ import FirebaseCore
      
      override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
          super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
-        addSubview(switchControl)
+        //addSubview(switchControl)
+        accessoryView = switchControl
+        if let view = accessoryView {
+            addSubview(view)
+        }
         switchControl.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         switchControl.rightAnchor.constraint(equalTo: rightAnchor, constant: -16).isActive = true
         
@@ -68,13 +73,13 @@ import FirebaseCore
         if sender.isOn {
             UserDefaultsConfig.notifcationsEnabled = true
             if let userID = user?.uid {
-                db.collection("user").document(userID).updateData(["deviceToken": token])
+                db.collection("user").document(userID).updateData(["deviceToken": token, "pushEnabled": true])
             }
             print("Turned on")
         }else{
              UserDefaultsConfig.notifcationsEnabled = false
             if let userID = user?.uid {
-              db.collection("user").document(userID).updateData(["deviceToken": ""])
+              db.collection("user").document(userID).updateData(["deviceToken": "", "pushEnabled": false])
             }
             print("Turned off")
         }
