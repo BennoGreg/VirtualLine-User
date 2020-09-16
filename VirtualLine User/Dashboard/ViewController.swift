@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FirebaseFirestoreSwift
+import FirebaseAuth
 
 
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -16,7 +17,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     
     var selectedQueue: Queue?
-
+    let db = Firestore.firestore()
+    var curUser: User?
     
  
     @IBOutlet weak var queueCollectionView: UICollectionView!
@@ -37,6 +39,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         setUpFirebase()
    
         getAllQueues()
+        
+        getCurrentQueue()
+        
     }
     override func viewWillDisappear(_ animated: Bool) {
 
@@ -44,7 +49,6 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func getAllQueues() {
         
-        let db = Firestore.firestore()
         let docRef = db.collection("queue")
 
         docRef.addSnapshotListener { [weak self] snapshot, error in
@@ -67,6 +71,70 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
             
         }
+    }
+    
+    func getCurrentQueue() {
+        
+        QueuesData.shared.currentQueues = nil
+      
+        let docRef = db.collection("user")
+    
+        docRef.addSnapshotListener { [weak self] snapshot, error in
+            if let err = error {
+                print("Error getting documents: \(err)")
+            } else {
+                if let documents = snapshot?.documents {
+                   let loggedInUser = Auth.auth().currentUser
+                    for document in documents {
+                        guard let loggedInUserID = loggedInUser?.uid else {return}
+                        do {
+                            
+                            if let user = try document.data(as: User.self) {
+                                
+                                if loggedInUserID == user.id {
+                                    if let userQueue = user.queueID {
+                                        self?.getCurQueue(queueRef: userQueue)
+                                    }
+                                self?.curUser = user
+                                CredentialsController.shared.user = user
+                                }
+                            }
+                        } catch let error as NSError {
+                            print("error: \(error)")
+                        }
+                    }
+                  
+                   
+                    
+                }
+            }
+            
+        }
+    }
+    
+    public func getCurQueue(queueRef: DocumentReference) {
+        
+        queueRef.getDocument { [weak self] (result, error) in
+            if let err = error {
+                print(err.localizedDescription)
+            } else if let document = result {
+                do {
+                    if let queue = try document.data(as: Queue.self) {
+                        
+                        self?.updateViewWithCurrentQueues(curQueues: [queue])
+                        
+                    }
+                
+                } catch let error as NSError {
+                    print("error\(error.localizedDescription)")
+                }
+                
+            }
+        }
+    }
+    func updateViewWithCurrentQueues(curQueues: [Queue]) {
+        QueuesData.shared.currentQueues = curQueues
+        queueCollectionView?.reloadData()
     }
    
     func updateViewWithQueues(queues: [Queue])  {

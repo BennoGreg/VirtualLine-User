@@ -12,6 +12,7 @@ class CredentialsController {
     
     
     var isLoggedIn = UserDefaultsConfig.isLoggedIn
+    var user: User?
     public func updateLogInStatus(loggedIn: Bool) {
         
         isLoggedIn = loggedIn

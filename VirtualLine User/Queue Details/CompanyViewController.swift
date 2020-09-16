@@ -6,8 +6,8 @@
 //  Copyright © 2020 Benedikt. All rights reserved.
 //
 
-import UIKit
 import FirebaseAuth
+import UIKit
 
 class CompanyViewController: UIViewController {
     @IBOutlet var ticketView: UIView!
@@ -19,13 +19,16 @@ class CompanyViewController: UIViewController {
     @IBOutlet var queueUpButton: UIButton!
     var queuedUp = false
     @IBOutlet var queueInfoLabel: UILabel!
+    var buttonPostition = ButtonPosition.up
 
     override func viewDidLoad() {
         // corner radius
+
+        queuedUp = UserDefaultsConfig.enqueued
         ticketView.layer.cornerRadius = 10
         companyNameLabel.text = currentCompanyQueue?.name
         if let queueCount = currentCompanyQueue?.queueCount, let timePerCustomer = currentCompanyQueue?.timePerCustomer {
-            waitingTimeLabel.text = String(queueCount*timePerCustomer)
+            waitingTimeLabel.text = String(queueCount * timePerCustomer)
             queueLengthLabel.text = String(queueCount)
         }
 
@@ -41,67 +44,17 @@ class CompanyViewController: UIViewController {
 //        ticketView.layer.shadowOpacity = 0.7
 //        ticketView.layer.shadowRadius = 4.0
         // self.applySemiCircleEffect(givenView: ticketView)
+        evaluateButtonPostition()
         updateMask()
     }
 
-    @IBAction func queueButtonPressed(_ sender: UIButton) {
-        var cancelPressed = false
-        let duration: TimeInterval = 0.8
-
-        
-        if !UserDefaultsConfig.notifcationsEnabled {
+    public func evaluateButtonPostition() {
+        if CredentialsController.shared.user?.queueID != nil &&
+            CredentialsController.shared.user?.queueID?.documentID == currentCompanyQueue?.id {
             
-            let alert = UIAlertController(title: "Benachrichtigugen einschalten.", message: "Bitte aktivieren Sie die Benachrichtigungen in den Einstellungen um sich bei einer Warteschlange anstellen zu können", preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
-            }))
-             present(alert, animated: true, completion: nil)
-        } else {
-        
-        if queuedUp {
-            let alert = UIAlertController(title: "Warteschlange verlassen", message: "Möchten Sie wirklich die Warteschlange verlassen?", preferredStyle: .alert)
-
-            alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { _ in
-
-                userDequeue(queueID: "UY4qnLOuYiBEKAtmVYH9", userID: "User1")
-                UIView.animate(withDuration: duration, animations: {
-                    self.queueUpButton.center.y = self.queueUpButton.center.y - 100
-                }) { _ in
-
-                    if let layer = self.queueUpButton.layer.sublayers?.first { // The first sublayer of
-                        layer.removeFromSuperlayer()
-                    }
-                    self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0x2B95CE).cgColor, CompanyViewController.UIColorFromRGB(0x2ECAD5).cgColor])
-                    self.queueUpButton.setTitle("Jetzt anstellen", for: .normal)
-                    self.queueInfoLabel.text = ""
-                }
-                self.queuedUp.toggle()
-
-            }))
-            alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertAction.Style.cancel, handler: { _ in
-                cancelPressed = true
-            }))
-
-            present(alert, animated: true, completion: nil)
-
-        } else {
-            if let id = currentCompanyQueue?.id, let userID = Auth.auth().currentUser?.uid {
-            userEnqueue(queueID: id, userID: userID)
-            }
-            queuedUp.toggle()
-          
-            
-            // add queue to current queue
-            if let curQueue = currentCompanyQueue {
-
-            if QueuesData.shared.currentQueues == nil {
-                QueuesData.shared.currentQueues = [Queue]()
-                QueuesData.shared.currentQueues?.append(curQueue)
-            } else {
-                QueuesData.shared.currentQueues?.append(curQueue)
-            }
-            }
-            UIView.animate(withDuration: duration, animations: {
+            buttonPostition = .down
+            queuedUp = true
+            UIView.animate(withDuration: 0, animations: {
                 self.queueUpButton.center.y = self.queueUpButton.center.y + 100
 
             }) { _ in
@@ -111,14 +64,106 @@ class CompanyViewController: UIViewController {
                 }
                 self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0xCC0000).cgColor, CompanyViewController.UIColorFromRGB(0x990000).cgColor])
                 self.queueUpButton.setTitle("Warteschlange verlassen", for: .normal)
-                // self.queueInfoLabel.text = "Sie sind jetzt in der Warteschange angestellt. \nWir werden Sie rechtzeitig benachrichtigen \nbevor Sie an der Reihe sind"
+                
             }
         }
+    }
+
+    @IBAction func queueButtonPressed(_ sender: UIButton) {
+        if !UserDefaultsConfig.notifcationsEnabled {
+            presentNotificationAlert()
+
+        } else {
+            if let id = currentCompanyQueue?.id, let userID = Auth.auth().currentUser?.uid {
+                if queuedUp {
+                    handleDequeue(queueId: id, userID: userID)
+
+                } else {
+                    
+                    if buttonPostition == .up && CredentialsController.shared.user?.queueID != nil {
+                        presentAlredyQueuedUpAlert()
+                    } else {
+                        handleQueueUp(queueId: id, userID: userID)
+                    }
+                }
+            }
         }
     }
-    
-    func queueUp() {
+    func presentAlredyQueuedUpAlert() {
         
+        let alert = UIAlertController(title: "Anstellen nicht möglich.", message: "Sie befinden sich derzeit schon in einer Warteschlange.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        present(alert, animated: true, completion: nil)
+        
+    }
+
+    func presentNotificationAlert() {
+        let alert = UIAlertController(title: "Benachrichtigugen einschalten.", message: "Bitte aktivieren Sie die Benachrichtigungen in den Einstellungen um sich bei einer Warteschlange anstellen zu können", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in
+        }))
+        present(alert, animated: true, completion: nil)
+    }
+
+    func handleQueueUp(queueId: String, userID: String) {
+        userEnqueue(queueID: queueId, userID: userID)
+
+        queuedUp.toggle()
+        buttonPostition = .down
+
+        // add queue to current queue
+        if let curQueue = currentCompanyQueue {
+            if QueuesData.shared.currentQueues == nil {
+                QueuesData.shared.currentQueues = [Queue]()
+                QueuesData.shared.currentQueues?.append(curQueue)
+            } else {
+                QueuesData.shared.currentQueues?.append(curQueue)
+            }
+        }
+        UIView.animate(withDuration: 0.8, animations: {
+            self.queueUpButton.center.y = self.queueUpButton.center.y + 100
+
+        }) { _ in
+
+            if let layer = self.queueUpButton.layer.sublayers?.first {
+                layer.removeFromSuperlayer()
+            }
+            self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0xCC0000).cgColor, CompanyViewController.UIColorFromRGB(0x990000).cgColor])
+            self.queueUpButton.setTitle("Warteschlange verlassen", for: .normal)
+            // self.queueInfoLabel.text = "Sie sind jetzt in der Warteschange angestellt. \nWir werden Sie rechtzeitig benachrichtigen \nbevor Sie an der Reihe sind"
+        }
+    }
+
+    func handleDequeue(queueId: String, userID: String) {
+         
+        userDequeue(queueID: queueId, userID: userID)
+        buttonPostition = .up
+        
+        let alert = UIAlertController(title: "Warteschlange verlassen", message: "Möchten Sie wirklich die Warteschlange verlassen?", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { _ in
+
+           
+            UIView.animate(withDuration: 0.8, animations: {
+                self.queueUpButton.center.y = self.queueUpButton.center.y - 100
+            }) { _ in
+
+                if let layer = self.queueUpButton.layer.sublayers?.first { // The first sublayer of
+                    layer.removeFromSuperlayer()
+                }
+                self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0x2B95CE).cgColor, CompanyViewController.UIColorFromRGB(0x2ECAD5).cgColor])
+                self.queueUpButton.setTitle("Jetzt anstellen", for: .normal)
+                self.queueInfoLabel.text = ""
+            }
+            self.queuedUp.toggle()
+
+        }))
+        alert.addAction(UIAlertAction(title: "Abbrechen", style: UIAlertAction.Style.cancel, handler: { _ in
+        }))
+
+        present(alert, animated: true, completion: nil)
     }
 
     private func updateMask() {
@@ -247,4 +292,9 @@ extension UIButton {
         titleLabel?.font = UIFont.boldSystemFont(ofSize: 17.0)
         titleLabel?.textColor = UIColor.white
     }
+}
+
+public enum ButtonPosition {
+    case up
+    case down
 }

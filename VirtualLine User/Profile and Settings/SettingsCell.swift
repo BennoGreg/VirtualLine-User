@@ -7,6 +7,7 @@
 //
 
  import UIKit
+import Firebase
 import FirebaseFirestore
 import UserNotifications
 import FirebaseAuth
@@ -67,23 +68,33 @@ import FirebaseCore
         
         let db = Firestore.firestore()
         let user = Auth.auth().currentUser
-        if let tokenData = Messaging.messaging().apnsToken {
-        let token = String(deviceToken: tokenData)
-        print(token)
-        if sender.isOn {
-            UserDefaultsConfig.notifcationsEnabled = true
-            if let userID = user?.uid {
-                db.collection("user").document(userID).updateData(["deviceToken": token, "pushEnabled": true])
+     //   if let tokenData = Messaging.messaging().apnsToken {
+        var token = ""
+        InstanceID.instanceID().instanceID { (result, error) in
+            if let error = error {
+                print(error.localizedDescription)
+            } else if let result = result {
+                
+                token = result.token
+                print(token)
+                       if sender.isOn {
+                           UserDefaultsConfig.notifcationsEnabled = true
+                           if let userID = user?.uid {
+                               db.collection("user").document(userID).updateData(["deviceToken": token, "pushEnabled": true])
+                           }
+                           print("Turned on")
+                       }else{
+                            UserDefaultsConfig.notifcationsEnabled = false
+                           if let userID = user?.uid {
+                             db.collection("user").document(userID).updateData(["deviceToken": "", "pushEnabled": false])
+                           }
+                           print("Turned off")
+                       }
+                
             }
-            print("Turned on")
-        }else{
-             UserDefaultsConfig.notifcationsEnabled = false
-            if let userID = user?.uid {
-              db.collection("user").document(userID).updateData(["deviceToken": "", "pushEnabled": false])
-            }
-            print("Turned off")
         }
-        }
+           
+     //   }
         
         
     }

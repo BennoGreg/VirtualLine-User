@@ -15,7 +15,7 @@ import FirebaseFunctions
 
 var db: Firestore!
 var ref: DocumentReference?
-var functions = Functions.functions()
+var functions = Functions.functions(region: "europe-west1")
 var userID: String = ""
 
 
@@ -26,6 +26,8 @@ func setUpFirebase(){
            // [END setup]
     db = Firestore.firestore()
 }
+
+
 
 func userEnqueue(queueID: String, userID: String){
     
@@ -68,3 +70,7 @@ func userDequeue(queueID: String, userID: String) {
     }
 
 }
+
+
+
+

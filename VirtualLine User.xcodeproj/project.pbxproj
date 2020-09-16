@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F320986250CC9730072194E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F320985250CC9730072194E /* User.swift */; };
 		3FA01B11250AAA1900EB8F96 /* PhoneLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA01B10250AAA1900EB8F96 /* PhoneLoginViewController.storyboard */; };
 		3FA01B13250AAA3F00EB8F96 /* PhoneLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B12250AAA3F00EB8F96 /* PhoneLoginViewController.swift */; };
 		3FA01B16250AAD0200EB8F96 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */; };
@@ -15,7 +16,6 @@
 		3FC8D64D250ABDC600A4E0A0 /* PhoneLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D64C250ABDC600A4E0A0 /* PhoneLoginViewModel.swift */; };
 		3FC8D652250AC77C00A4E0A0 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D651250AC77C00A4E0A0 /* String+Extensions.swift */; };
 		3FC8D654250B6F4D00A4E0A0 /* ViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC8D653250B6F4D00A4E0A0 /* ViewController+Extensions.swift */; };
-		57922D68745BC90A1727AD4F /* Pods_VirtualLine_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 51622EA1A3685C6AD2F649E0 /* Pods_VirtualLine_User.framework */; };
 		850C24AA248EBEC600B15C27 /* AllQueuesSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 850C24A9248EBEC600B15C27 /* AllQueuesSectionHeader.swift */; };
 		852B09F2246FF537004715BD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 852B09F0246FF537004715BD /* Main.storyboard */; };
 		852B09F5246FF63D004715BD /* QueueSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 852B09F4246FF63D004715BD /* QueueSectionHeader.swift */; };
@@ -38,6 +38,7 @@
 		85A1DAD8247AF6DF00D0FFE2 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1DAD7247AF6DF00D0FFE2 /* SettingsCell.swift */; };
 		85A1DADA247AF70A00D0FFE2 /* UserInfoHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1DAD9247AF70A00D0FFE2 /* UserInfoHeader.swift */; };
 		85A1DADC247B064800D0FFE2 /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A1DADB247B064800D0FFE2 /* SettingsSection.swift */; };
+		8E2976DCD624422FAA807CF7 /* Pods_VirtualLine_User.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65730546E80556B9662E7674 /* Pods_VirtualLine_User.framework */; };
 		D35328DC250A272C00628871 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D35328DB250A272C00628871 /* GoogleService-Info.plist */; };
 		D3A7B56F2460733C00C0247C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7B56E2460733C00C0247C /* AppDelegate.swift */; };
 		D3A7B5712460733C00C0247C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3A7B5702460733C00C0247C /* SceneDelegate.swift */; };
@@ -48,6 +49,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F320985250CC9730072194E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3FA01B10250AAA1900EB8F96 /* PhoneLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneLoginViewController.storyboard; sourceTree = "<group>"; };
 		3FA01B12250AAA3F00EB8F96 /* PhoneLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginViewController.swift; sourceTree = "<group>"; };
 		3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -57,7 +59,8 @@
 		3FC8D64E250AC6DD00A4E0A0 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = "../../../../../../AllAboutApps/Projects/Employee App/employee-ios/EmployeeKit/Code/Utilities/Validation.swift"; sourceTree = "<group>"; };
 		3FC8D651250AC77C00A4E0A0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3FC8D653250B6F4D00A4E0A0 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
-		51622EA1A3685C6AD2F649E0 /* Pods_VirtualLine_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualLine_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		65730546E80556B9662E7674 /* Pods_VirtualLine_User.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VirtualLine_User.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		68DFC935D7EE7B4C20BEB8A6 /* Pods-VirtualLine User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.release.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.release.xcconfig"; sourceTree = "<group>"; };
 		850C24A9248EBEC600B15C27 /* AllQueuesSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllQueuesSectionHeader.swift; sourceTree = "<group>"; };
 		852B09F1246FF537004715BD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		852B09F4246FF63D004715BD /* QueueSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QueueSectionHeader.swift; sourceTree = "<group>"; };
@@ -80,7 +83,7 @@
 		85A1DAD7247AF6DF00D0FFE2 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		85A1DAD9247AF70A00D0FFE2 /* UserInfoHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInfoHeader.swift; sourceTree = "<group>"; };
 		85A1DADB247B064800D0FFE2 /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
-		C0881F79221292D6B4F75C75 /* Pods-VirtualLine User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.debug.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.debug.xcconfig"; sourceTree = "<group>"; };
+		8B256A21D6AE0D5A12CAA9F4 /* Pods-VirtualLine User.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.debug.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.debug.xcconfig"; sourceTree = "<group>"; };
 		D35328D8250A246300628871 /* VirtualLine User.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "VirtualLine User.entitlements"; sourceTree = "<group>"; };
 		D35328DB250A272C00628871 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D3A7B56B2460733C00C0247C /* VirtualLine User.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VirtualLine User.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +94,6 @@
 		D3A7B57A2460733D00C0247C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3A7B57D2460733D00C0247C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3A7B57F2460733D00C0247C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FC1B4508C473CA01A1102533 /* Pods-VirtualLine User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.release.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,19 +101,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57922D68745BC90A1727AD4F /* Pods_VirtualLine_User.framework in Frameworks */,
+				8E2976DCD624422FAA807CF7 /* Pods_VirtualLine_User.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		24DC7F013553373A01093AFC /* Frameworks */ = {
+		3F320984250CC9420072194E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				51622EA1A3685C6AD2F649E0 /* Pods_VirtualLine_User.framework */,
+				852B09FA247011A5004715BD /* TestQueue.swift */,
+				3F320985250CC9730072194E /* User.swift */,
 			);
-			name = Frameworks;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		3FA01B0F250AA9F700EB8F96 /* Phone-Login */ = {
@@ -141,6 +144,14 @@
 				3FC8D653250B6F4D00A4E0A0 /* ViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		497E8A534F7FC21017467144 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65730546E80556B9662E7674 /* Pods_VirtualLine_User.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		852B09F3246FF623004715BD /* CollectionView */ = {
@@ -185,7 +196,6 @@
 			children = (
 				852B09F0246FF537004715BD /* Main.storyboard */,
 				D3A7B5722460733C00C0247C /* ViewController.swift */,
-				852B09FA247011A5004715BD /* TestQueue.swift */,
 				852B09F3246FF623004715BD /* CollectionView */,
 			);
 			path = Dashboard;
@@ -220,8 +230,8 @@
 		A1FEF0B21A1D00573E970121 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C0881F79221292D6B4F75C75 /* Pods-VirtualLine User.debug.xcconfig */,
-				FC1B4508C473CA01A1102533 /* Pods-VirtualLine User.release.xcconfig */,
+				8B256A21D6AE0D5A12CAA9F4 /* Pods-VirtualLine User.debug.xcconfig */,
+				68DFC935D7EE7B4C20BEB8A6 /* Pods-VirtualLine User.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -232,7 +242,7 @@
 				D3A7B56D2460733C00C0247C /* VirtualLine User */,
 				D3A7B56C2460733C00C0247C /* Products */,
 				A1FEF0B21A1D00573E970121 /* Pods */,
-				24DC7F013553373A01093AFC /* Frameworks */,
+				497E8A534F7FC21017467144 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -260,6 +270,7 @@
 				855E0E98248685BA00DEF643 /* Server Communication */,
 				3FA01B14250AACE600EB8F96 /* Utilities */,
 				3FC8D650250AC6FF00A4E0A0 /* Extensions */,
+				3F320984250CC9420072194E /* Models */,
 				D3A7B57A2460733D00C0247C /* Assets.xcassets */,
 				D3A7B57C2460733D00C0247C /* LaunchScreen.storyboard */,
 				D3A7B57F2460733D00C0247C /* Info.plist */,
@@ -275,11 +286,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D3A7B5822460733D00C0247C /* Build configuration list for PBXNativeTarget "VirtualLine User" */;
 			buildPhases = (
-				86A333D3FCDCB2D32878EA04 /* [CP] Check Pods Manifest.lock */,
+				87389CD4D971539D6AE6B6B1 /* [CP] Check Pods Manifest.lock */,
 				D3A7B5672460733C00C0247C /* Sources */,
 				D3A7B5682460733C00C0247C /* Frameworks */,
 				D3A7B5692460733C00C0247C /* Resources */,
-				33C482DBBA493962DB7FF06F /* [CP] Embed Pods Frameworks */,
+				D952592B5B2954B0ACC66708 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -344,24 +355,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		33C482DBBA493962DB7FF06F /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		86A333D3FCDCB2D32878EA04 /* [CP] Check Pods Manifest.lock */ = {
+		87389CD4D971539D6AE6B6B1 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -381,6 +375,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D952592B5B2954B0ACC66708 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -410,6 +421,7 @@
 				3FA01B16250AAD0200EB8F96 /* UserDefaults.swift in Sources */,
 				858CED94248D662C003E19B0 /* AllQueuesViewController.swift in Sources */,
 				3FC8D654250B6F4D00A4E0A0 /* ViewController+Extensions.swift in Sources */,
+				3F320986250CC9730072194E /* User.swift in Sources */,
 				8583DE492467475C00F2A406 /* UserSettingsViewController.swift in Sources */,
 				D3A7B5712460733C00C0247C /* SceneDelegate.swift in Sources */,
 				3FA01B1A250AB10B00EB8F96 /* Segues.swift in Sources */,
@@ -558,7 +570,7 @@
 		};
 		D3A7B5832460733D00C0247C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0881F79221292D6B4F75C75 /* Pods-VirtualLine User.debug.xcconfig */;
+			baseConfigurationReference = 8B256A21D6AE0D5A12CAA9F4 /* Pods-VirtualLine User.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "VirtualLine User/VirtualLine User.entitlements";
@@ -580,7 +592,7 @@
 		};
 		D3A7B5842460733D00C0247C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FC1B4508C473CA01A1102533 /* Pods-VirtualLine User.release.xcconfig */;
+			baseConfigurationReference = 68DFC935D7EE7B4C20BEB8A6 /* Pods-VirtualLine User.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "VirtualLine User/VirtualLine User.entitlements";
