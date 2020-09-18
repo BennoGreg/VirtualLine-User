@@ -54,8 +54,8 @@ func userEnqueue(queueID: String, userID: String){
 func userDequeue(queueID: String, userID: String) {
 
     
-    
-     let dataDict: [String: Any] = ["id": queueID, "reference": userID]
+    guard let userPosition = CredentialsController.shared.user?.numberInQueue else {return}
+    let dataDict: [String: Any] = ["id": queueID, "reference": userID, "position": userPosition]
     
     functions.httpsCallable("deleteReference").call(dataDict) { (result, error) in
     if let error = error as NSError? {

@@ -192,9 +192,8 @@ extension AppDelegate: UNUserNotificationCenterDelegate{
 
       // Print full message.
       print(userInfo)
-        data = userInfo["data"] as! [String: AnyObject]
         
-        NotificationCenter.default.post(name: .didReceiveData, object: nil, userInfo: data)
+//        NotificationCenter.default.post(name: .didReceiveData, object: nil, userInfo: data)
 
       // Change this to your preferred presentation option
       completionHandler([[.alert, .sound]])
