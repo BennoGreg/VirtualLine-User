@@ -34,7 +34,16 @@ class CompanyViewController: UIViewController {
 
         queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0x2B95CE).cgColor, CompanyViewController.UIColorFromRGB(0x2ECAD5).cgColor])
         queueInfoLabel.text = ""
+          queueUpButton.isEnabled = true
+          queueUpButton.titleLabel?.font = .systemFont(ofSize: 16)
+        if Auth.auth().currentUser == nil {
+                   
+            queueUpButton.setTitle("Bitte einloggen um anzustellen.", for: .disabled)
+            queueUpButton.isEnabled = false
+            queueUpButton.titleLabel?.font = .systemFont(ofSize: 12)
 
+            }
+               
         // border
         //   ticketView.layer.borderWidth = 1.0
 
