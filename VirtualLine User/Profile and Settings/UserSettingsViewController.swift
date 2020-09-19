@@ -191,6 +191,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         
         do {
             try firebaseAuth.signOut()
+            viewWillAppear(false)
         } catch let signOutError as NSError {
             print("Sign out error: \(signOutError)")
         }
