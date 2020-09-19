@@ -26,6 +26,8 @@ class PhoneLoginViewModel {
        var isMFAEnabled = true
     var delegate: PhoneLoginDelegate?
     
+    
+    
     func verifyPhoneNumber(phoneNumber: String) {
            
            Auth.auth().languageCode = "de"
@@ -113,6 +115,14 @@ class PhoneLoginViewModel {
             }
         }
        
+    public func nameInfoAlert() -> UIAlertController {
+        
+        let alert = UIAlertController(title: "Information - Name", message: "Das Angeben ihres Namen ist optional. Ihr Name wird nur beim Anstellen bei einer Warteschlange dem Verkäufer angezeigt um den Dienstleistungsprozess möglicherweise zu vereinfachen.", preferredStyle: .alert)
+
+            alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: { _ in}))
+          return alert
+    }
+    
     public func logOutPhoneNumber() {
         
         

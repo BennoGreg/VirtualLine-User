@@ -18,6 +18,10 @@ class PhoneLoginViewController: ViewController {
     @IBOutlet weak var verificationCodeTextField: UITextField!
     @IBOutlet weak var confirmVerificationButton: UIButton!
     
+    @IBOutlet weak var lastNameTextfield: UITextField!
+    @IBOutlet weak var firstNameTextField: UITextField!
+    @IBOutlet weak var nameInfoButton: UIButton!
+    @IBOutlet weak var nameLabel: UILabel!
     let viewModel = PhoneLoginViewModel()
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +54,11 @@ class PhoneLoginViewController: ViewController {
             
 
 }
-
+    @IBAction func nameInfoButtonPressed(_ sender: UIButton) {
+        present(viewModel.nameInfoAlert(), animated: true, completion: nil)
+    }
+    
+    
 }
 extension PhoneLoginViewController: PhoneLoginDelegate {
    
@@ -71,6 +79,17 @@ extension PhoneLoginViewController: PhoneLoginDelegate {
     
    func verificationCodeValid() {
           CredentialsController.shared.updateLogInStatus(loggedIn: true)
+    if let firstName = firstNameTextField.text, let lastName = lastNameTextfield.text {
+        UserDefaultsConfig.userFirstName = firstName
+        UserDefaultsConfig.userLastName = lastName
+        CredentialsController.shared.updateName()
+        
+        
+        
+        
+    }
+    
+    
         self.navigationController?.popViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
      }
