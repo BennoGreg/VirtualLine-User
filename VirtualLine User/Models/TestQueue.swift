@@ -23,4 +23,11 @@ struct Queue: Codable, Identifiable {
     let name: String
     let queueCount: Int
     let timePerCustomer: Int
+    
+    
+}
+extension Queue {
+    var titleFirstLetter: String {
+        return String(self.name[self.name.startIndex]).uppercased()
+    }
 }

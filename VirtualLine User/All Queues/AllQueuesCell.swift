@@ -17,11 +17,11 @@ class AllQueuesCell: UICollectionViewCell {
     
     @IBOutlet weak var queueWaitingTimeLabel: UILabel!
     
-    func update(queueName: String,queueTime: Int, queueLength: Int){
+    func update(queue: Queue){
         
-        queueNameLabel.text = queueName
-        queueWaitingTimeLabel.text = "\(queueTime) Minuten"
-        queueLengthLabel.text = "\(queueLength) Personen"
+        queueNameLabel.text = queue.name
+        queueWaitingTimeLabel.text = "\(queue.timePerCustomer * queue.queueCount) Minuten"
+        queueLengthLabel.text = "\(queue.queueCount) Personen"
         
     }
 }

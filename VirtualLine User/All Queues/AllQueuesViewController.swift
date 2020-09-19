@@ -15,8 +15,11 @@ struct Section {
 
 class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     @IBOutlet var allQueuesCollectionView: UICollectionView!
-    var sections = [Section]()
-    var letters = [String]()
+   // var sections = [Section]()
+    //var letters = [String]()
+    var sortedFirstLetters = [String]()
+    var sections: [[Queue]] = [[]]
+
 
     override func viewWillAppear(_ animated: Bool) {
         allQueuesCollectionView.delegate = self
@@ -27,18 +30,29 @@ class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICol
     }
 
     func configureQueueData() {
-        var queueNames: [String] = []
+//        var queueNames: [String] = []
+//
+//        for curQueue in QueuesData.shared.allQueues {
+//            queueNames.append(curQueue.name)
+//        }
+//
+//        // groups the array to ["H": ["H&M"], "K": ["Klipp", "KTM Shop"],...
+//        let groupedDictionary = Dictionary(grouping: queueNames, by: { String($0.prefix(1)) })
+//        // get the keys and sort them
+//        letters = groupedDictionary.keys.sorted()
+        //sections = letters.map { Section(letter: $0, names: groupedDictionary[$0]!.sorted()) }
 
-        for curQueue in QueuesData.shared.allQueues {
-            queueNames.append(curQueue.name)
+        let queues = QueuesData.shared.allQueues
+        let firstLetters = queues.map { $0.titleFirstLetter}
+        let uniqueFirstLetters = Array(Set(firstLetters))
+        sortedFirstLetters = uniqueFirstLetters.sorted()
+
+         sections = sortedFirstLetters.map { firstLetter in
+            return queues
+            .filter { $0.titleFirstLetter == firstLetter } // only names with the same first letter in title
+            .sorted { $0.name < $1.name}
+           // sort them
         }
-
-        // groups the array to ["H": ["H&M"], "K": ["Klipp", "KTM Shop"],...
-        let groupedDictionary = Dictionary(grouping: queueNames, by: { String($0.prefix(1)) })
-        // get the keys and sort them
-        letters = groupedDictionary.keys.sorted()
-        // map the sorted keys to a struct
-        sections = letters.map { Section(letter: $0, names: groupedDictionary[$0]!.sorted()) }
     }
 
     func setUpUI() {
@@ -53,7 +67,7 @@ class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICol
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return sections[section].names.count
+        return sections[section].count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -65,18 +79,19 @@ class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICol
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let sectionHeaderView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "allQueuesSectionHeader", for: indexPath) as! AllQueuesSectionHeader
 
-        sectionHeaderView.update(sectionName: letters[indexPath.section])
+        sectionHeaderView.update(sectionName: sortedFirstLetters[indexPath.section])
 
         return sectionHeaderView
     }
+   
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: AllQueuesCell = collectionView.dequeueReusableCell(withReuseIdentifier: "allQueuesCell", for: indexPath) as! AllQueuesCell
         updateCellDesign(cell: cell)
-        let section = sections[indexPath.section]
-        let queueName = section.names[indexPath.row]
+        let queue = sections[indexPath.section][indexPath.row]
+        
 
-        cell.update(queueName: queueName, queueTime: 3, queueLength: 4)
+        cell.update(queue: queue)
 
         return cell
     }
