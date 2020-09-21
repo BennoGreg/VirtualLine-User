@@ -41,9 +41,9 @@ public struct UserDefaultsConfig {
     @UserDefaultsWrapper(key: "enqueued", defaultValue: false)
     public static var enqueued: Bool
     
-    @UserDefaultsWrapper(key: "userFirstName", defaultValue: "Anonym")
+    @UserDefaultsWrapper(key: "userFirstName", defaultValue: "User")
        public static var userFirstName: String
-    @UserDefaultsWrapper(key: "userLastName", defaultValue: "Anonym")
+    @UserDefaultsWrapper(key: "userLastName", defaultValue: "")
        public static var userLastName: String
     
     @UserDefaultsWrapper(key: "userPhoneNumber", defaultValue: "no number saved")

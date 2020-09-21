@@ -286,12 +286,12 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
        
         if (indexPath.section == 0){
             if QueuesData.shared.currentQueues != nil {
-                return CGSize(width: 180, height: 180)
+                return CGSize(width: UIScreen.main.bounds.size.width * 0.9, height: UIScreen.main.bounds.size.width * 0.4)
             } else {
                 return CGSize(width: 0, height: 0)
             }
         } else {
-            return CGSize(width: 110, height: 110)
+            return CGSize(width: (UIScreen.main.bounds.size.width * 0.8)/3 , height: (UIScreen.main.bounds.size.width * 0.8)/3)
 
         }
     
