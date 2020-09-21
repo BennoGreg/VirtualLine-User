@@ -191,6 +191,11 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         
         do {
             try firebaseAuth.signOut()
+            UserDefaultsConfig.isLoggedIn = false
+            UserDefaultsConfig.userFirstName = ""
+            UserDefaultsConfig.userLastName = ""
+            UserDefaultsConfig.userPhoneNumber = "no number saved"
+            
             viewWillAppear(false)
         } catch let signOutError as NSError {
             print("Sign out error: \(signOutError)")

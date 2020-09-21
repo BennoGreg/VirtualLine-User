@@ -79,10 +79,13 @@ extension PhoneLoginViewController: PhoneLoginDelegate {
     
    func verificationCodeValid() {
           CredentialsController.shared.updateLogInStatus(loggedIn: true)
-    if let firstName = firstNameTextField.text, let lastName = lastNameTextfield.text {
+    if let firstName = firstNameTextField.text, let lastName = lastNameTextfield.text, let number = phoneNumberTextField.text {
         UserDefaultsConfig.userFirstName = firstName
         UserDefaultsConfig.userLastName = lastName
-        CredentialsController.shared.updateName()
+        UserDefaultsConfig.userPhoneNumber = number
+        CredentialsController.shared.updateUserInfo()
+
+        
     }
     
     

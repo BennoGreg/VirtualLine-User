@@ -109,7 +109,7 @@ enum AboutUsOptions: Int, CaseIterable, CustomStringConvertible, SectionType{
            
            switch self {
            case .gtc:
-               return "Allgemeine Geschäftsbedingungen (AGB)"
+               return "Allgemeine Geschäftsbedingungen"
            case .dataPrivacy:
                return "Datenschutz"
            }

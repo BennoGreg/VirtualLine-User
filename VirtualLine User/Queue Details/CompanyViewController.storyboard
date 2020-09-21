@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tNW-vF-QdT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tNW-vF-QdT">
     <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -56,7 +58,7 @@
                                         <color key="textColor" red="0.025901304560000001" green="0.05380536616" blue="0.30961942669999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcx-ld-hmc">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xcx-ld-hmc">
                                         <rect key="frame" x="64" y="576" width="222" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="Yqd-z9-EnU"/>
@@ -73,7 +75,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="MVJ-zh-PFP" firstAttribute="centerY" secondItem="qQj-G6-1o7" secondAttribute="centerY" id="3ov-TQ-ffq"/>
                                     <constraint firstItem="xcx-ld-hmc" firstAttribute="leading" secondItem="S8Y-4x-bdC" secondAttribute="leading" constant="64" id="BM8-dN-mFX"/>
@@ -98,6 +100,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="r3y-IJ-ynk"/>
                         <color key="backgroundColor" red="0.13764911890000001" green="0.3523529768" blue="0.62324434520000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="S8Y-4x-bdC" firstAttribute="top" secondItem="r3y-IJ-ynk" secondAttribute="top" id="7eX-VS-ctA"/>
@@ -105,7 +108,6 @@
                             <constraint firstItem="r3y-IJ-ynk" firstAttribute="trailing" secondItem="S8Y-4x-bdC" secondAttribute="trailing" constant="32" id="ClG-Pk-axG"/>
                             <constraint firstItem="r3y-IJ-ynk" firstAttribute="bottom" secondItem="S8Y-4x-bdC" secondAttribute="bottom" constant="32" id="iNS-aL-h4j"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="r3y-IJ-ynk"/>
                     </view>
                     <connections>
                         <outlet property="companyNameLabel" destination="VdC-64-JSC" id="lXu-k3-hNF"/>
@@ -121,4 +123,13 @@
             <point key="canvasLocation" x="169.56521739130437" y="44.866071428571423"/>
         </scene>
     </scenes>
+    <color key="tintColor" systemColor="labelColor"/>
+    <resources>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

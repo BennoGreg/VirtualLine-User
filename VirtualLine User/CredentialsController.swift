@@ -13,6 +13,7 @@ class CredentialsController {
     
     var isLoggedIn = UserDefaultsConfig.isLoggedIn
     var user: User?
+    var phoneNumber = UserDefaultsConfig.userPhoneNumber
     var userFirstName = UserDefaultsConfig.userFirstName
     var userLastName = UserDefaultsConfig.userLastName
     public func updateLogInStatus(loggedIn: Bool) {
@@ -22,11 +23,16 @@ class CredentialsController {
     
         
     }
-    public func updateName() {
+    
+    public func getFullName() -> String {
+        return "\(userFirstName) \(userLastName)"
+    }
+    
+    public func updateUserInfo() {
         
         userFirstName = UserDefaultsConfig.userFirstName
         userLastName = UserDefaultsConfig.userLastName
-        
+        phoneNumber = UserDefaultsConfig.userPhoneNumber
         if let userID = user?.id {
             
             db.collection("user").document(userID).updateData(["name":"\(userFirstName) \(userLastName)"])

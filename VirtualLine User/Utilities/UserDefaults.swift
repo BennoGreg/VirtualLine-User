@@ -45,4 +45,7 @@ public struct UserDefaultsConfig {
        public static var userFirstName: String
     @UserDefaultsWrapper(key: "userLastName", defaultValue: "Anonym")
        public static var userLastName: String
+    
+    @UserDefaultsWrapper(key: "userPhoneNumber", defaultValue: "no number saved")
+       public static var userPhoneNumber: String
 }
