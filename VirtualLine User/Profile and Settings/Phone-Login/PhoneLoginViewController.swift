@@ -83,10 +83,6 @@ extension PhoneLoginViewController: PhoneLoginDelegate {
         UserDefaultsConfig.userFirstName = firstName
         UserDefaultsConfig.userLastName = lastName
         CredentialsController.shared.updateName()
-        
-        
-        
-        
     }
     
     

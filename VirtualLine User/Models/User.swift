@@ -14,4 +14,5 @@ struct User: Codable, Identifiable {
     let name: String?
     let queueID: DocumentReference?
     let numberInQueue: Int?
+    let customerQueueID: Int?
 }

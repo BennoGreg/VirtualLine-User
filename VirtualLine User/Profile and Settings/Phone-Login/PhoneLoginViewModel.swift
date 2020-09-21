@@ -110,7 +110,7 @@ class PhoneLoginViewModel {
               // ...
                 self?.grantUserRole()
 
-                self?.delegate?.verificationCodeValid()
+                
                 print("success")
             }
         }
@@ -133,7 +133,7 @@ class PhoneLoginViewModel {
         
         let uidDictionary: [String: Any] = ["uid": user?.uid]
         
-        functions.httpsCallable("grantUserRole").call(uidDictionary) { (result, error) in
+        functions.httpsCallable("grantUserRole").call(uidDictionary) { [weak self] (result, error) in
             if let error = error as NSError? {
               if error.domain == FunctionsErrorDomain {
                 let code = FunctionsErrorCode(rawValue: error.code)
@@ -141,6 +141,9 @@ class PhoneLoginViewModel {
                 let details = error.userInfo[FunctionsErrorDetailsKey]
                 print(message, details)
               }
+            } else if let result = result {
+                print(result)
+                self?.delegate?.verificationCodeValid()
             }
         }
     }

@@ -147,14 +147,15 @@ class CompanyViewController: UIViewController {
 
     func handleDequeue(queueId: String, userID: String) {
          
-        userDequeue(queueID: queueId, userID: userID)
-        buttonPostition = .up
+       
         
         let alert = UIAlertController(title: "Warteschlange verlassen", message: "Möchten Sie wirklich die Warteschlange verlassen?", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { _ in
 
-           
+            userDequeue(queueID: queueId, userID: userID)
+            self.buttonPostition = .up
+            
             UIView.animate(withDuration: 0.8, animations: {
                 self.queueUpButton.center.y = self.queueUpButton.center.y - 100
             }) { _ in

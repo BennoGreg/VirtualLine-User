@@ -114,7 +114,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     public func getCurQueue(queueRef: DocumentReference) {
         
-        queueRef.getDocument { [weak self] (result, error) in
+        queueRef.addSnapshotListener { [weak self] (result, error) in
             if let err = error {
                 print(err.localizedDescription)
             } else if let document = result {
