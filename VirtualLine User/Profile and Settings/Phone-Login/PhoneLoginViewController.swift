@@ -29,10 +29,11 @@ class PhoneLoginViewController: ViewController {
         self.hideKeyboardWhenTappedAround()
         
         viewModel.delegate = self
-        
-        self.parent?.title = "Login"
-         navigationItem.largeTitleDisplayMode = .always
-         self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.title = "Login"
+
+//        self.parent?.title = "Login"
+//         navigationItem.largeTitleDisplayMode = .always
+//         self.navigationController?.navigationBar.prefersLargeTitles = true
         verificationCodeLabel.isHidden = true
         verificationCodeTextField.isHidden = true
         confirmVerificationButton.isHidden = true

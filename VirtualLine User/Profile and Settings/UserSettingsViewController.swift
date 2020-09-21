@@ -54,6 +54,8 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
             let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
             userInfoHeader = UserInfoHeader(frame: frame)
              tableView.tableHeaderView = userInfoHeader
+        }   else {
+            tableView.tableHeaderView = UIView()
         }
       
        
@@ -67,9 +69,13 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         
         configureTableView()
 
-         self.parent?.title = "User"
-          navigationItem.largeTitleDisplayMode = .always
-          self.navigationController?.navigationBar.prefersLargeTitles = true
+        parent?.title = "User"
+        navigationItem.largeTitleDisplayMode = .always
+        navigationController?.navigationBar.prefersLargeTitles = true
+   //     self.title = "User"
+//         self.parent?.title = "User"
+//          navigationItem.largeTitleDisplayMode = .always
+//          self.navigationController?.navigationBar.prefersLargeTitles = true
 
         let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         navigationController?.navigationBar.titleTextAttributes = textAttributes

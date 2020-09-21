@@ -26,8 +26,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     override func viewWillAppear(_ animated: Bool) {
        
+      //  self.title = "Virtual Line"
         self.parent?.title = "Virtual Line"
-       navigationItem.largeTitleDisplayMode = .always
+        navigationItem.largeTitleDisplayMode = .always
        self.navigationController?.navigationBar.prefersLargeTitles = true
      
         let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]

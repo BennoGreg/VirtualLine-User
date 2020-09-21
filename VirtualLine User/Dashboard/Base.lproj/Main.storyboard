@@ -147,7 +147,7 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Dashboard" image="house" catalog="system" selectedImage="house.fill" id="NtP-ca-km8"/>
-                    <navigationItem key="navigationItem" title="VirtualLine" id="mQY-lK-5M0"/>
+                    <navigationItem key="navigationItem" title="VirtualLine" largeTitleDisplayMode="always" id="mQY-lK-5M0"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="queueCollectionView" destination="p4K-e9-haR" id="UpY-Wh-yQm"/>
@@ -182,7 +182,7 @@
         <!--Navigation Controller-->
         <scene sceneID="vds-Vb-0sC">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="YkS-nj-XuO" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" hidesBarsOnSwipe="YES" id="YkS-nj-XuO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5VI-3t-mZV">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -201,12 +201,12 @@
             </objects>
             <point key="canvasLocation" x="137.68115942028987" y="112.5"/>
         </scene>
-        <!--Virtual Line-->
+        <!--Tab Bar Controller-->
         <scene sceneID="6RP-9k-dL9">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qKZ-dt-atM" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Virtual Line" id="4Yk-iP-5vS"/>
+                    <navigationItem key="navigationItem" id="4Yk-iP-5vS"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="rH3-M0-sbH">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>

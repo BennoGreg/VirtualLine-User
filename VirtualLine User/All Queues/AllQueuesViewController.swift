@@ -56,8 +56,8 @@ class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICol
     }
 
     func setUpUI() {
+   //     self.navigationItem.title = "Alle Warteschlangen"
         parent?.title = "Alle Warteschlangen"
-
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
 
