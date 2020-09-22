@@ -81,6 +81,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let docRef = db.collection("user")
     
         docRef.addSnapshotListener { [weak self] snapshot, error in
+            QueuesData.shared.currentQueues = nil
             if let err = error {
                 print("Error getting documents: \(err)")
             } else {
@@ -203,7 +204,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if indexPath.section == 0 && QueuesData.shared.currentQueues != nil {
 
             let cell: QueueCell = collectionView.dequeueReusableCell(withReuseIdentifier: "queueCell", for: indexPath) as! QueueCell
-            cell.update(queueName: QueuesData.shared.currentQueues![indexPath.row].name, queueTime: QueuesData.shared.currentQueues![indexPath.row].timePerCustomer * QueuesData.shared.currentQueues![indexPath.row].queueCount, queueLength: QueuesData.shared.currentQueues![indexPath.row].queueCount)
+            cell.update(queueName: QueuesData.shared.currentQueues![indexPath.row].name, queueTime: QueuesData.shared.currentQueues![indexPath.row].timePerCustomer * ((curUser?.numberInQueue ?? 0) - 1), queuePostition: (curUser?.numberInQueue ?? 0), customerQueueID: curUser?.customerQueueID ?? -1)
            
             updateCellLayout(cell: cell)
              return cell

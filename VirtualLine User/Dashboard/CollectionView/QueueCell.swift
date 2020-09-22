@@ -12,6 +12,8 @@ class QueueCell: UICollectionViewCell {
     
     @IBOutlet weak var queueNameLabel: UILabel!
     
+    @IBOutlet weak var customerQueueIDLabel: UILabel!
+    
     @IBOutlet weak var queueTimeLabel: UILabel!
     
     @IBOutlet weak var queueLengthLabel: UILabel!
@@ -31,11 +33,15 @@ class QueueCell: UICollectionViewCell {
         
     }
     
-    func update(queueName: String,queueTime: Int, queueLength: Int){
+    func update(queueName: String,queueTime: Int, queuePostition: Int, customerQueueID: Int){
         
         queueNameLabel.text = queueName
-        queueTimeLabel.text = "\(queueTime) Minuten"
-        queueLengthLabel.text = "\(queueLength) Personen"
+        queueTimeLabel.text = "\(queueTime) min"
+        queueLengthLabel.text = "\(queuePostition)."
+        
+        if customerQueueID != -1 {
+            customerQueueIDLabel.text = "\(customerQueueID)"
+        }
         
     }
 }
