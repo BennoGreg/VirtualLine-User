@@ -41,7 +41,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
    
         getAllQueues()
         
-        getCurrentQueue()
+        getUser()
         
     }
     override func viewWillDisappear(_ animated: Bool) {
@@ -74,7 +74,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func getCurrentQueue() {
+    func getUser() {
         
         QueuesData.shared.currentQueues = nil
       
@@ -96,6 +96,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                                 if loggedInUserID == user.id {
                                     if let userQueue = user.queueID {
                                         self?.getCurQueue(queueRef: userQueue)
+                                    } else {
+                                        self?.updateViewWithCurrentQueues(curQueues: nil)
                                     }
                                 self?.curUser = user
                                 CredentialsController.shared.user = user
@@ -116,7 +118,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     public func getCurQueue(queueRef: DocumentReference) {
         
-        queueRef.addSnapshotListener { [weak self] (result, error) in
+        queueRef.getDocument { [weak self] (result, error) in
             if let err = error {
                 print(err.localizedDescription)
             } else if let document = result {
@@ -134,7 +136,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             }
         }
     }
-    func updateViewWithCurrentQueues(curQueues: [Queue]) {
+    func updateViewWithCurrentQueues(curQueues: [Queue]?) {
         QueuesData.shared.currentQueues = curQueues
         queueCollectionView?.reloadData()
     }

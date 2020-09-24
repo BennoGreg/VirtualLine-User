@@ -12,6 +12,9 @@ import UIKit
 class CompanyViewController: UIViewController {
     @IBOutlet var ticketView: UIView!
 
+    @IBOutlet weak var customerWaitingTimeTitleLabel: UILabel!
+    @IBOutlet weak var customerQueueIDTitleLabel: UILabel!
+    @IBOutlet weak var customerPositionTitleLabel: UILabel!
     @IBOutlet var queueLengthLabel: UILabel!
     @IBOutlet var companyNameLabel: UILabel!
     @IBOutlet var waitingTimeLabel: UILabel!
@@ -21,10 +24,26 @@ class CompanyViewController: UIViewController {
     @IBOutlet var queueInfoLabel: UILabel!
     var buttonPostition = ButtonPosition.up
 
-    override func viewDidLoad() {
+    @IBOutlet weak var customerWaitingTimeLabel: UILabel!
+    @IBOutlet weak var customerPositionLabel: UILabel!
+    @IBOutlet weak var customerQueueIDLabel: UILabel!
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+       
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         // corner radius
 
-        queuedUp = UserDefaultsConfig.enqueued
+        
+        customerPositionLabel.isHidden = true
+        customerWaitingTimeLabel.isHidden = true
+        customerQueueIDLabel.isHidden = true
+        customerPositionTitleLabel.isHidden = true
+        customerWaitingTimeTitleLabel.isHidden = true
+        customerQueueIDTitleLabel.isHidden = true
         ticketView.layer.cornerRadius = 10
         companyNameLabel.text = currentCompanyQueue?.name
         if let queueCount = currentCompanyQueue?.queueCount, let timePerCustomer = currentCompanyQueue?.timePerCustomer {
@@ -44,28 +63,20 @@ class CompanyViewController: UIViewController {
 
             }
                
-        // border
-        //   ticketView.layer.borderWidth = 1.0
-
-        // shadow
-//        ticketView.layer.shadowColor = UIColor.black.cgColor
-//        ticketView.layer.shadowOffset = CGSize(width: 3, height: 3)
-//        ticketView.layer.shadowOpacity = 0.7
-//        ticketView.layer.shadowRadius = 4.0
-        // self.applySemiCircleEffect(givenView: ticketView)
-        evaluateButtonPostition()
         updateMask()
+        evaluateButtonPostition()
+     
     }
 
     public func evaluateButtonPostition() {
         if CredentialsController.shared.user?.queueID != nil &&
             CredentialsController.shared.user?.queueID?.documentID == currentCompanyQueue?.id {
             
-            buttonPostition = .down
-            queuedUp = true
+            updateEnqueuedValuesUI()
+                                    
             UIView.animate(withDuration: 0, animations: {
                 self.queueUpButton.center.y = self.queueUpButton.center.y + 100
-
+              
             }) { _ in
 
                 if let layer = self.queueUpButton.layer.sublayers?.first {
@@ -76,6 +87,39 @@ class CompanyViewController: UIViewController {
                 
             }
         }
+    }
+    
+    func updateEnqueuedValuesUI() {
+        buttonPostition = .down
+        queuedUp = true
+        customerPositionLabel.isHidden = false
+        customerWaitingTimeLabel.isHidden = false
+        customerQueueIDLabel.isHidden = false
+        customerPositionLabel.textColor = .label
+        customerWaitingTimeLabel.textColor = .label
+        customerQueueIDLabel.textColor = .label
+        
+        customerPositionTitleLabel.isHidden = false
+        customerWaitingTimeTitleLabel.isHidden = false
+        customerQueueIDTitleLabel.isHidden = false
+        customerPositionTitleLabel.textColor = .label
+        customerWaitingTimeTitleLabel.textColor = .label
+        customerQueueIDTitleLabel.textColor = .label
+        
+        if let queueCount = currentCompanyQueue?.queueCount, let timePerCustomer = currentCompanyQueue?.timePerCustomer {
+            waitingTimeLabel.text = String(queueCount * timePerCustomer)
+            queueLengthLabel.text = String(queueCount)
+        }
+        
+        if let customerQueueID = CredentialsController.shared.user?.customerQueueID, let timePerCustomer =  QueuesData.shared.currentQueues?.first?.timePerCustomer, let customerPosititon = CredentialsController.shared.user?.numberInQueue {
+            
+            let waitingTime = timePerCustomer*(customerPosititon-1)
+            customerQueueIDLabel.text = "\(customerQueueID)"
+            customerWaitingTimeLabel.text = "\(waitingTime) min"
+            customerPositionLabel.text = String(customerPosititon)
+            
+        }
+
     }
 
     @IBAction func queueButtonPressed(_ sender: UIButton) {
@@ -90,15 +134,16 @@ class CompanyViewController: UIViewController {
                 } else {
                     
                     if buttonPostition == .up && CredentialsController.shared.user?.queueID != nil {
-                        presentAlredyQueuedUpAlert()
+                        presentAlreadyQueuedUpAlert()
                     } else {
                         handleQueueUp(queueId: id, userID: userID)
+                        
                     }
                 }
             }
         }
     }
-    func presentAlredyQueuedUpAlert() {
+    func presentAlreadyQueuedUpAlert() {
         
         let alert = UIAlertController(title: "Anstellen nicht möglich.", message: "Sie befinden sich derzeit schon in einer Warteschlange.", preferredStyle: .alert)
 
@@ -117,11 +162,11 @@ class CompanyViewController: UIViewController {
     }
 
     func handleQueueUp(queueId: String, userID: String) {
-        userEnqueue(queueID: queueId, userID: userID)
+        userEnqueue(queueID: queueId, userID: userID) {
+            self.updateEnqueuedValuesUI()
+        }
 
         queuedUp.toggle()
-        buttonPostition = .down
-
         // add queue to current queue
         if let curQueue = currentCompanyQueue {
             if QueuesData.shared.currentQueues == nil {
@@ -131,18 +176,23 @@ class CompanyViewController: UIViewController {
                 QueuesData.shared.currentQueues?.append(curQueue)
             }
         }
-        UIView.animate(withDuration: 0.8, animations: {
-            self.queueUpButton.center.y = self.queueUpButton.center.y + 100
+        self.updateEnqueuedValuesUI()
 
+        UIView.animate(withDuration: 0.8, animations: {
+           
+           
         }) { _ in
 
+            self.queueUpButton.center.y = self.queueUpButton.center.y + 100
             if let layer = self.queueUpButton.layer.sublayers?.first {
                 layer.removeFromSuperlayer()
             }
             self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0xCC0000).cgColor, CompanyViewController.UIColorFromRGB(0x990000).cgColor])
             self.queueUpButton.setTitle("Warteschlange verlassen", for: .normal)
-            // self.queueInfoLabel.text = "Sie sind jetzt in der Warteschange angestellt. \nWir werden Sie rechtzeitig benachrichtigen \nbevor Sie an der Reihe sind"
+
         }
+        self.updateEnqueuedValuesUI()
+
     }
 
     func handleDequeue(queueId: String, userID: String) {
@@ -153,8 +203,16 @@ class CompanyViewController: UIViewController {
 
         alert.addAction(UIAlertAction(title: "Ja", style: UIAlertAction.Style.default, handler: { _ in
 
+            self.customerPositionLabel.isHidden = true
+            self.customerWaitingTimeLabel.isHidden = true
+            self.customerQueueIDLabel.isHidden = true
+            self.customerPositionTitleLabel.isHidden = true
+            self.customerWaitingTimeTitleLabel.isHidden = true
+            self.customerQueueIDTitleLabel.isHidden = true
+            
             userDequeue(queueID: queueId, userID: userID)
             self.buttonPostition = .up
+          
             
             UIView.animate(withDuration: 0.8, animations: {
                 self.queueUpButton.center.y = self.queueUpButton.center.y - 100

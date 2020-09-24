@@ -38,8 +38,6 @@ public struct UserDefaultsConfig {
     @UserDefaultsWrapper(key: "notifcationsEnabled", defaultValue: false)
     public static var notifcationsEnabled: Bool
     
-    @UserDefaultsWrapper(key: "enqueued", defaultValue: false)
-    public static var enqueued: Bool
     
     @UserDefaultsWrapper(key: "userFirstName", defaultValue: "User")
        public static var userFirstName: String

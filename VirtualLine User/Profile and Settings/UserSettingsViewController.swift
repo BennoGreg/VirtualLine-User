@@ -201,6 +201,8 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
             UserDefaultsConfig.userFirstName = ""
             UserDefaultsConfig.userLastName = ""
             UserDefaultsConfig.userPhoneNumber = "no number saved"
+            CredentialsController.shared.updateUserInfo()
+            CredentialsController.shared.user = nil
             
             viewWillAppear(false)
         } catch let signOutError as NSError {
