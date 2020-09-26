@@ -31,7 +31,7 @@ class CompanyViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
        
-        
+     
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,10 +51,13 @@ class CompanyViewController: UIViewController {
             queueLengthLabel.text = String(queueCount)
         }
 
-        queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0x2B95CE).cgColor, CompanyViewController.UIColorFromRGB(0x2ECAD5).cgColor])
+        queueUpButton.backgroundColor = UIColor(named: "virtualLineColor")
+        queueUpButton.layoutIfNeeded()
+        queueUpButton.layer.cornerRadius = queueUpButton.frame.height / 2
         queueInfoLabel.text = ""
           queueUpButton.isEnabled = true
           queueUpButton.titleLabel?.font = .systemFont(ofSize: 16)
+
         if Auth.auth().currentUser == nil {
                    
             queueUpButton.setTitle("Bitte einloggen um anzustellen.", for: .disabled)
@@ -79,9 +82,9 @@ class CompanyViewController: UIViewController {
               
             }) { _ in
 
-                if let layer = self.queueUpButton.layer.sublayers?.first {
-                    layer.removeFromSuperlayer()
-                }
+//                if let layer = self.queueUpButton.layer.sublayers?.first {
+//                    layer.removeFromSuperlayer()
+//                }
                 self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0xCC0000).cgColor, CompanyViewController.UIColorFromRGB(0x990000).cgColor])
                 self.queueUpButton.setTitle("Warteschlange verlassen", for: .normal)
                 
@@ -95,16 +98,16 @@ class CompanyViewController: UIViewController {
         customerPositionLabel.isHidden = false
         customerWaitingTimeLabel.isHidden = false
         customerQueueIDLabel.isHidden = false
-        customerPositionLabel.textColor = .label
-        customerWaitingTimeLabel.textColor = .label
-        customerQueueIDLabel.textColor = .label
+        customerPositionLabel.textColor = .lightGray
+        customerWaitingTimeLabel.textColor = .lightGray
+        customerQueueIDLabel.textColor = .lightGray
         
         customerPositionTitleLabel.isHidden = false
         customerWaitingTimeTitleLabel.isHidden = false
         customerQueueIDTitleLabel.isHidden = false
-        customerPositionTitleLabel.textColor = .label
-        customerWaitingTimeTitleLabel.textColor = .label
-        customerQueueIDTitleLabel.textColor = .label
+        customerPositionTitleLabel.textColor = .lightGray
+        customerWaitingTimeTitleLabel.textColor = .lightGray
+        customerQueueIDTitleLabel.textColor = .lightGray
         
         if let queueCount = currentCompanyQueue?.queueCount, let timePerCustomer = currentCompanyQueue?.timePerCustomer {
             waitingTimeLabel.text = String(queueCount * timePerCustomer)
@@ -184,9 +187,9 @@ class CompanyViewController: UIViewController {
         }) { _ in
 
             self.queueUpButton.center.y = self.queueUpButton.center.y + 100
-            if let layer = self.queueUpButton.layer.sublayers?.first {
-                layer.removeFromSuperlayer()
-            }
+//            if let layer = self.queueUpButton.layer.sublayers?.first {
+//                layer.removeFromSuperlayer()
+//            }
             self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0xCC0000).cgColor, CompanyViewController.UIColorFromRGB(0x990000).cgColor])
             self.queueUpButton.setTitle("Warteschlange verlassen", for: .normal)
 
@@ -221,7 +224,9 @@ class CompanyViewController: UIViewController {
                 if let layer = self.queueUpButton.layer.sublayers?.first { // The first sublayer of
                     layer.removeFromSuperlayer()
                 }
-                self.queueUpButton.applyGradient(colors: [CompanyViewController.UIColorFromRGB(0x2B95CE).cgColor, CompanyViewController.UIColorFromRGB(0x2ECAD5).cgColor])
+                self.queueUpButton.backgroundColor = UIColor(named: "virtualLineColor")
+                self.queueUpButton.layoutIfNeeded()
+                self.queueUpButton.layer.cornerRadius = self.queueUpButton.frame.height / 2
                 self.queueUpButton.setTitle("Jetzt anstellen", for: .normal)
                 self.queueInfoLabel.text = ""
             }
@@ -260,7 +265,7 @@ class CompanyViewController: UIViewController {
 
         layer.path = path3.cgPath
         layer.lineWidth = 5
-        layer.strokeColor = UIColor(red: 0 / 255, green: 0 / 255, blue: 0 / 255, alpha: 1.0).cgColor // Set Dashed line Color
+        layer.strokeColor = UIColor.lightGray.cgColor // Set Dashed line Color
         layer.lineDashPattern = [7, 7] // Here you set line length
         layer.backgroundColor = UIColor.clear.cgColor
         layer.fillColor = UIColor.clear.cgColor
@@ -342,6 +347,8 @@ extension UIButton {
     func applyGradient(colors: [CGColor]) {
         backgroundColor = nil
         layoutIfNeeded()
+        layer.cornerRadius = frame.height / 2
+
         let gradientLayer = CAGradientLayer()
         gradientLayer.colors = colors
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)

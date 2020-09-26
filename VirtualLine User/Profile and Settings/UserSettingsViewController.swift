@@ -18,7 +18,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
     var tableView: UITableView!
     var userInfoHeader: UserInfoHeader!
     
-    var isLoggedIn = CredentialsController.shared.isLoggedIn
+    //var isLoggedIn = CredentialsController.shared.isLoggedIn
 
     // MARK: - Init
 
@@ -50,7 +50,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         tableView.frame = view.frame
 
        
-        if isLoggedIn {
+        if Auth.auth().currentUser != nil {
             let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
             userInfoHeader = UserInfoHeader(frame: frame)
              tableView.tableHeaderView = userInfoHeader
@@ -66,7 +66,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
 
     func configureUI() {
         
-         isLoggedIn = CredentialsController.shared.isLoggedIn
+        // isLoggedIn = CredentialsController.shared.isLoggedIn
         
         configureTableView()
 
@@ -95,7 +95,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         guard let section = SettingsSection(rawValue: section) else { return 0 }
         switch section {
         case .profile:
-            if isLoggedIn {
+            if Auth.auth().currentUser != nil {
             return LoggedInProfileOptions.allCases.count
             } else {
             return LoggedOutProfileOptions.allCases.count
@@ -114,7 +114,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         switch section {
             
         case .profile:
-            if isLoggedIn {
+            if Auth.auth().currentUser != nil {
             let profile = LoggedInProfileOptions.init(rawValue: indexPath.row)
             cell.sectionType = profile
             } else {
@@ -169,9 +169,9 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         case .profile:
             
            
-            if isLoggedIn {
+            if Auth.auth().currentUser != nil {
              if indexPath.row == 1 {
-                CredentialsController.shared.updateLogInStatus(loggedIn: false)
+               // CredentialsController.shared.updateLogInStatus(loggedIn: false)
                 configureUI()
                 logOutPhoneNumber()
                 
@@ -201,7 +201,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         
         do {
             try firebaseAuth.signOut()
-            UserDefaultsConfig.isLoggedIn = false
+           // UserDefaultsConfig.isLoggedIn = false
             UserDefaultsConfig.userFirstName = ""
             UserDefaultsConfig.userLastName = ""
             UserDefaultsConfig.userPhoneNumber = "no number saved"

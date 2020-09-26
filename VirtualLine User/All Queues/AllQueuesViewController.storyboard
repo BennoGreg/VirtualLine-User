@@ -124,7 +124,7 @@
                             <constraint firstItem="Gei-7k-UkI" firstAttribute="top" secondItem="fSA-VF-ghS" secondAttribute="top" id="zBb-vK-PPJ"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="All Queues" image="list.dash" catalog="system" id="5Ue-tA-n0J"/>
+                    <tabBarItem key="tabBarItem" title="Alle Warteschlangen" image="list.dash" catalog="system" id="5Ue-tA-n0J"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="allQueuesCollectionView" destination="Gei-7k-UkI" id="ua9-Pi-JUZ"/>

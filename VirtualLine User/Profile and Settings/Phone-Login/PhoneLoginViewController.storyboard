@@ -42,7 +42,7 @@
                                     <action selector="confirmNumberButtonPressed:" destination="OyP-1f-yXe" eventType="touchUpInside" id="rmF-VB-q5G"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKq-EJ-iVG">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bestätigungscode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKq-EJ-iVG">
                                 <rect key="frame" x="32" y="402" width="350" height="26"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
                                 <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -150,7 +150,7 @@
     </scenes>
     <resources>
         <namedColor name="virtualLineColor">
-            <color red="0.02890360728" green="0.58498108390000003" blue="0.53333181139999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.028999999165534973" green="0.58499997854232788" blue="0.53299999237060547" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

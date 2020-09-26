@@ -58,7 +58,6 @@
 		3FA01B17250AAD9F00EB8F96 /* CredentialsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialsController.swift; sourceTree = "<group>"; };
 		3FA01B19250AB10B00EB8F96 /* Segues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segues.swift; sourceTree = "<group>"; };
 		3FC8D64C250ABDC600A4E0A0 /* PhoneLoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginViewModel.swift; sourceTree = "<group>"; };
-		3FC8D64E250AC6DD00A4E0A0 /* Validation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Validation.swift; path = "../../../../../../AllAboutApps/Projects/Employee App/employee-ios/EmployeeKit/Code/Utilities/Validation.swift"; sourceTree = "<group>"; };
 		3FC8D651250AC77C00A4E0A0 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		3FC8D653250B6F4D00A4E0A0 /* ViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extensions.swift"; sourceTree = "<group>"; };
 		662C88D394FB222D4A995926 /* Pods-VirtualLine User.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VirtualLine User.release.xcconfig"; path = "Target Support Files/Pods-VirtualLine User/Pods-VirtualLine User.release.xcconfig"; sourceTree = "<group>"; };
@@ -132,7 +131,6 @@
 		3FA01B14250AACE600EB8F96 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				3FC8D64E250AC6DD00A4E0A0 /* Validation.swift */,
 				3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */,
 				3FA01B19250AB10B00EB8F96 /* Segues.swift */,
 			);

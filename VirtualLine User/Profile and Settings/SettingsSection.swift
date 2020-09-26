@@ -73,15 +73,12 @@ enum SettingsOptions: Int, CaseIterable, SectionType{
    
     
     case notification
-    case language
     
     var containsSwitch: Bool {
         
         switch self {
         case .notification:
             return true
-        case .language:
-            return false
         }
     }
     
@@ -90,8 +87,7 @@ enum SettingsOptions: Int, CaseIterable, SectionType{
         switch self {
         case .notification:
             return "Benachrichtigungen"
-        case .language:
-            return "Sprache"
+       
         }
         
     }
