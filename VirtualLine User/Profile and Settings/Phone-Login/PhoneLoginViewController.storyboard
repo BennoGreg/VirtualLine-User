@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OyP-1f-yXe">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_1" orientation="portrait" appearance="dark"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -20,7 +21,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Telefonnummer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cya-Tg-V8U">
                                 <rect key="frame" x="32" y="218" width="350" height="26"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gom-fe-DfK">
@@ -34,7 +35,9 @@
                                     <constraint firstAttribute="width" constant="100" id="m1A-nK-cCo"/>
                                     <constraint firstAttribute="height" constant="60" id="wS1-6d-9zQ"/>
                                 </constraints>
-                                <state key="normal" title="Confirm"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="tintColor" name="virtualLineColor"/>
+                                <state key="normal" title="Bestätigen"/>
                                 <connections>
                                     <action selector="confirmNumberButtonPressed:" destination="OyP-1f-yXe" eventType="touchUpInside" id="rmF-VB-q5G"/>
                                 </connections>
@@ -42,7 +45,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verification code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YKq-EJ-iVG">
                                 <rect key="frame" x="32" y="402" width="350" height="26"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GPf-UC-S2t">
@@ -56,7 +59,9 @@
                                     <constraint firstAttribute="width" constant="100" id="SbR-jv-9xv"/>
                                     <constraint firstAttribute="height" constant="60" id="eMq-WC-uuM"/>
                                 </constraints>
-                                <state key="normal" title="Confirm"/>
+                                <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="17"/>
+                                <color key="tintColor" name="virtualLineColor"/>
+                                <state key="normal" title="Bestätigen"/>
                                 <connections>
                                     <action selector="confirmVerificationButtonClicked:" destination="OyP-1f-yXe" eventType="touchUpInside" id="5g8-u8-BTs"/>
                                 </connections>
@@ -64,7 +69,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nSv-KU-Ncc">
                                 <rect key="frame" x="32" y="60" width="56" height="26"/>
                                 <fontDescription key="fontDescription" name="Futura-Medium" family="Futura" pointSize="20"/>
-                                <nil key="textColor"/>
+                                <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Vorname" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="e4z-8l-jPm">
@@ -83,7 +88,7 @@
                                     <constraint firstAttribute="width" constant="30" id="Vke-px-bya"/>
                                     <constraint firstAttribute="height" constant="30" id="VyG-ep-ioH"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="secondaryLabelColor"/>
+                                <color key="tintColor" name="virtualLineColor"/>
                                 <connections>
                                     <action selector="nameInfoButtonPressed:" destination="OyP-1f-yXe" eventType="touchUpInside" id="X0A-ca-uvz"/>
                                 </connections>
@@ -144,9 +149,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="secondaryLabelColor">
-            <color red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
+        <namedColor name="virtualLineColor">
+            <color red="0.02890360728" green="0.58498108390000003" blue="0.53333181139999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

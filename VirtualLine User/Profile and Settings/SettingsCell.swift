@@ -25,6 +25,9 @@ import FirebaseCore
             switchControl.isHidden = !sectionType.containsSwitch
 
             textLabel?.text = sectionType.description
+            textLabel?.textColor = .lightGray
+            textLabel?.font = UIFont(name: "Futura", size: CGFloat(15))
+
         }
     }
     
@@ -36,6 +39,7 @@ import FirebaseCore
         }else {
             switchControl.isOn = false
         }
+        switchControl.onTintColor = UIColor(named: "virtualLineColor")
         //switchControl.onTintColor = UIColor(displayP3Red: 55/255, green: 120/255, blue: 250/255, alpha: 1)
         switchControl.translatesAutoresizingMaskIntoConstraints = false;
         switchControl.addTarget(self, action: #selector(handleSwitchAction), for: .valueChanged)

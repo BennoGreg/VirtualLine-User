@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3F320986250CC9730072194E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F320985250CC9730072194E /* User.swift */; };
+		3F4E0B5A251F462C00F1206D /* Color.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3F4E0B59251F462C00F1206D /* Color.xcassets */; };
 		3FA01B11250AAA1900EB8F96 /* PhoneLoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3FA01B10250AAA1900EB8F96 /* PhoneLoginViewController.storyboard */; };
 		3FA01B13250AAA3F00EB8F96 /* PhoneLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B12250AAA3F00EB8F96 /* PhoneLoginViewController.swift */; };
 		3FA01B16250AAD0200EB8F96 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */; };
@@ -50,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		3F320985250CC9730072194E /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		3F4E0B59251F462C00F1206D /* Color.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Color.xcassets; sourceTree = "<group>"; };
 		3FA01B10250AAA1900EB8F96 /* PhoneLoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PhoneLoginViewController.storyboard; sourceTree = "<group>"; };
 		3FA01B12250AAA3F00EB8F96 /* PhoneLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneLoginViewController.swift; sourceTree = "<group>"; };
 		3FA01B15250AAD0200EB8F96 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -272,6 +274,7 @@
 				3FC8D650250AC6FF00A4E0A0 /* Extensions */,
 				3F320984250CC9420072194E /* Models */,
 				D3A7B57A2460733D00C0247C /* Assets.xcassets */,
+				3F4E0B59251F462C00F1206D /* Color.xcassets */,
 				D3A7B57C2460733D00C0247C /* LaunchScreen.storyboard */,
 				D3A7B57F2460733D00C0247C /* Info.plist */,
 				D3A7B5772460733C00C0247C /* VirtualLine_User.xcdatamodeld */,
@@ -344,6 +347,7 @@
 				D35328DC250A272C00628871 /* GoogleService-Info.plist in Resources */,
 				8532FD862477C0FE00EA3404 /* CurrentQueueDetailsViewController.storyboard in Resources */,
 				3FA01B11250AAA1900EB8F96 /* PhoneLoginViewController.storyboard in Resources */,
+				3F4E0B5A251F462C00F1206D /* Color.xcassets in Resources */,
 				8532FD8A2477C17200EA3404 /* CompanyViewController.storyboard in Resources */,
 				8583DE472467475100F2A406 /* UserSettingsViewController.storyboard in Resources */,
 				D3A7B57B2460733D00C0247C /* Assets.xcassets in Resources */,

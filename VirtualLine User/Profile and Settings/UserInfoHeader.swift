@@ -18,6 +18,7 @@
          iv.clipsToBounds = true
          iv.translatesAutoresizingMaskIntoConstraints = false
          iv.image = UIImage(systemName: "person.crop.circle.fill")
+         iv.backgroundColor = .lightGray
          return iv
      }()
      
@@ -25,7 +26,8 @@
          let label = UILabel()
         label.text = CredentialsController.shared.getFullName()
          label.font = UIFont.systemFont(ofSize: 16)
-        label.textColor = .black
+        label.font = UIFont(name: "Futura", size: CGFloat(16))
+        label.textColor = .white
          label.translatesAutoresizingMaskIntoConstraints = false
          return label
      }()
@@ -33,7 +35,9 @@
      let emailLabel: UILabel = {
          let label = UILabel()
         label.text = CredentialsController.shared.phoneNumber
-         label.font = UIFont.systemFont(ofSize: 14)
+       
+        label.font = UIFont(name: "Futura", size: CGFloat(14))
+
          label.textColor = .lightGray
          label.translatesAutoresizingMaskIntoConstraints = false
          return label
@@ -52,6 +56,7 @@
          profileImageView.widthAnchor.constraint(equalToConstant: profileImageDimension).isActive = true
          profileImageView.heightAnchor.constraint(equalToConstant: profileImageDimension).isActive = true
          profileImageView.layer.cornerRadius = profileImageDimension / 2
+       
          
          addSubview(usernameLabel)
          usernameLabel.centerYAnchor.constraint(equalTo: profileImageView.centerYAnchor, constant: -10).isActive = true

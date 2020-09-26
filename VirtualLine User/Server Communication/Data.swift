@@ -11,7 +11,7 @@ import UIKit
 class QueuesData {
     
     var allQueues: [Queue] = [
-        .init(name: "Klipp", queueCount: 20, timePerCustomer: 20)
+        .init(name: "", queueCount: 20, timePerCustomer: 20)
      ]
      
      var currentQueues: [Queue]?

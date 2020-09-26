@@ -61,9 +61,9 @@ class AllQueuesViewController: UIViewController, UICollectionViewDelegate, UICol
         navigationItem.largeTitleDisplayMode = .always
         navigationController?.navigationBar.prefersLargeTitles = true
 
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

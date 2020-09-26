@@ -23,6 +23,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
  
     @IBOutlet weak var queueCollectionView: UICollectionView!
     
+
     
     override func viewWillAppear(_ animated: Bool) {
        
@@ -31,9 +32,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         navigationItem.largeTitleDisplayMode = .always
        self.navigationController?.navigationBar.prefersLargeTitles = true
      
-        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.black]
+        let textAttributes = [NSAttributedString.Key.foregroundColor:UIColor.lightGray]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
 
 
         

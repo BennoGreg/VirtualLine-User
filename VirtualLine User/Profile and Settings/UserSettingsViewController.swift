@@ -40,7 +40,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
     func configureTableView() {
         tableView = UITableView()
         //let color = UIColor(displayP3Red: 6 / 255, green: 14 / 255, blue: 79 / 255, alpha: 1)
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .black
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 60
@@ -54,6 +54,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
             let frame = CGRect(x: 0, y: 88, width: view.frame.width, height: 100)
             userInfoHeader = UserInfoHeader(frame: frame)
              tableView.tableHeaderView = userInfoHeader
+            tableView.tableHeaderView?.backgroundColor = .black
         }   else {
             tableView.tableHeaderView = UIView()
         }
@@ -77,9 +78,9 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
 //          navigationItem.largeTitleDisplayMode = .always
 //          self.navigationController?.navigationBar.prefersLargeTitles = true
 
-        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        let textAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
         navigationController?.navigationBar.titleTextAttributes = textAttributes
-        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.lightGray]
 
        
     }
@@ -131,6 +132,7 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
               cell.sectionType = aboutUs
         }
         
+        cell.backgroundColor = .black
         
 
         return cell
@@ -140,8 +142,10 @@ class UserSettingsViewController: UIViewController, UITableViewDelegate, UITable
         let view = UIView()
 
         let title = UILabel()
-        title.font = UIFont.boldSystemFont(ofSize: 24)
-        title.textColor = .black
+        title.font = UIFont.boldSystemFont(ofSize: 20)
+        title.textColor = UIColor(named: "virtualLineColor")
+        title.font = UIFont(name: "Futura", size: CGFloat(17))
+
         view.addSubview(title)
         title.translatesAutoresizingMaskIntoConstraints = false
         title.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
